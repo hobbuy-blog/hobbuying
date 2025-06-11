@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-<script src="https://www.google.com/recaptcha/api.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>bockring's Blog</title>
@@ -24,7 +23,7 @@
     }
     #cookie-consent-overlay {
       position: fixed;
-      top: 0; left: 0; width: 480vw; height: 100vh;
+      top: 0; left: 0; width: 360vw; height: 100vh;
       background: rgba(0,0,0,0.65);
       z-index: 9999;
       display: none;
@@ -68,26 +67,16 @@
 
 
   <!-- Cookie Consent Banner -->
-  <script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
-  </script>
-
   <div id="cookie-consent-overlay">
     <div id="cookie-consent-modal">
       <h2>Webサイトポリシー同意のお願い</h2>
       <p>
         このWebサイトはCookieを使用しています。<br>
-        また、Google Analyticsによって閲覧者の行動分析機能に加え、<br><br>
+        また、Google Analyticsによって閲覧者の行動分析機能を使用しています。<br><br>
 
         閲覧を続行するには同意してください。
       </p>
-      <button class="g-recaptcha" 
-        id="accept-cookies"
-        data-sitekey="reCAPTCHA_site_key" 
-        data-callback='onSubmit' 
-        data-action='submit'>同意する</button>
+      <button id="accept-cookies">同意する</button>
     </div>
   </div>
 
