@@ -176,7 +176,7 @@
         var overlay = document.getElementById('cookie-consent-overlay');
         overlay.style.display = 'flex';
         document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 365);
+          setCookie('cookie_consent', 'accepted', 90);
           overlay.style.display = 'none';
           loadGoogleAnalytics();
         }
