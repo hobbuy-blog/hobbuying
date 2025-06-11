@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!-- Google Analytics -->
-<!--
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9KZ4SE6QC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G9KZ4SE6QC');
-</script>
--->
-
-<!-- HEAD FILE -->
+<!-- Head -->
 <head>
   <meta charset="UTF-8">
   <title>bockring's Blog</title>
@@ -35,9 +24,9 @@
       color: #0055a4;
     }
   </style>
-
-  <style data-emotion="style-global 1etvg7j" data-s="">.style-1etvg7j{background-color:var(--color-qiitaGreen);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:6px 10px;border-radius:4px;}.style-1etvg7j >svg{fill:var(--color-gray0);height:18px;}</style>
 </head>
+
+<!-- Body -->
 <body>
   <h1>bockring's Blog</h1>
   <h2>Welcome to my blog</h2>
@@ -169,7 +158,7 @@
       } else {
         document.getElementById('cookie-consent-banner').style.display = 'block';
         document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 365);
+          setCookie('cookie_consent', 'accepted', 90);
           document.getElementById('cookie-consent-banner').style.display = 'none';
           loadGoogleAnalytics();
         }
