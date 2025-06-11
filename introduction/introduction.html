@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>bockring's Blog</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
+      background: #fafafa;
+      color: #222;
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 1rem;
+      line-height: 1.7;
+    }
+    h1 {
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3em;
+    }
+    a {
+      color: #0055a4;
+    }
+    #cookie-consent-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.65);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    #cookie-consent-modal {
+      background: #fff;
+      color: #222;
+      padding: 2em 2em 1.5em 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      text-align: left;
+      max-width: 90vw;
+      width: 350px;
+    }
+    a {
+      color: #0055a4;
+    }
+    cookie-consent-modal button {
+      margin-top: 1em;
+      padding: 0.7em 2em;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #cookie-consent-modal button:hover {
+      background: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>bockring's Blog</h1>
+  <h2>[固定]自己紹介と活動内容<small> - 2025.6.11</small></h2>
+  <p>
+    皆さま、こんにちは。<br>
+    本ブログの<b>管理者兼執筆者</b>の<b><ruby>bockring<rt>ボックリング</rt></ruby></b>と申します。<br>
+    s
+  </p>
+  <br><br>
+  <a href="../index.html">←メインページに戻る</a>
+
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-overlay">
+    <div id="cookie-consent-modal">
+      <h2>Web閲覧にあたって</h2>
+      <p>
+        このWebサイトはCookieと<br>
+        Google Analyticsを使用しています。<br><br>
+
+        閲覧を続行するには同意してください。
+      </p>
+      <button id="accept-cookies">同意する</button>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    function loadGoogleAnalytics() {
+      var id = 'G-G9KZ4SE6QC';
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      document.head.appendChild(gaScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var consent = getCookie('cookie_consent');
+      if(consent === 'accepted') {
+        loadGoogleAnalytics();
+      } else {
+        var overlay = document.getElementById('cookie-consent-overlay');
+        overlay.style.display = 'flex';
+        document.getElementById('accept-cookies').onclick = function() {
+          setCookie('cookie_consent', 'accepted', 90);
+          overlay.style.display = 'none';
+          loadGoogleAnalytics();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
