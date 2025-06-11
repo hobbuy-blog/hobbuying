@@ -23,6 +23,19 @@
     a {
       color: #0055a4;
     }
+    cookie-consent-modal button {
+      margin-top: 1em;
+      padding: 0.7em 2em;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #cookie-consent-modal button:hover {
+      background: #388e3c;
+    }
   </style>
 </head>
 
@@ -127,7 +140,6 @@
       }
       document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
-
     function getCookie(name) {
       var nameEQ = name + "=";
       var ca = document.cookie.split(';');
@@ -138,28 +150,29 @@
       }
       return null;
     }
-
     function loadGoogleAnalytics() {
+      var id = 'G-G9KZ4SE6QC';
       var gaScript = document.createElement('script');
       gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-G9KZ4SE6QC";
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
       document.head.appendChild(gaScript);
 
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       window.gtag = gtag;
       gtag('js', new Date());
-      gtag('config', 'G-G9KZ4SE6QC');
+      gtag('config', id);
     }
-
     document.addEventListener('DOMContentLoaded', function() {
-      if(getCookie('cookie_consent') === 'accepted') {
+      var consent = getCookie('cookie_consent');
+      if(consent === 'accepted') {
         loadGoogleAnalytics();
       } else {
-        document.getElementById('cookie-consent-banner').style.display = 'block';
+        var overlay = document.getElementById('cookie-consent-overlay');
+        overlay.style.display = 'flex';
         document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          document.getElementById('cookie-consent-banner').style.display = 'none';
+          setCookie('cookie_consent', 'accepted', 365);
+          overlay.style.display = 'none';
           loadGoogleAnalytics();
         }
       }
