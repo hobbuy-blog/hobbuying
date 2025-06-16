@@ -67,11 +67,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
     }
     .site-title {
       font-size: 2em;
       font-weight: bold;
-      letter-spacing: 2px;
+      letter-spacing: 0px;
     }
     nav {
       margin-left: 2em;
@@ -96,7 +101,7 @@ Link style:
 -->
 <body>
   <header>
-    <div class="site-title">Hobbuy Blog</div>
+    <div class="site-title">Hobbuy Blog<br><small>趣味と購入のブログ</small></div>
     <nav>
       <a href="../index.html">ホームページ</a>
       <a href="#top">ページトップ</a>
