@@ -61,11 +61,55 @@
     #cookie-consent-modal button:hover {
       background: #388e3c;
     }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .site-title {
+      color: #fff;
+      font-size: 1em;
+      letter-spacing: 0px;
+    }
+    .site-title a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav {
+      margin-left: 2em;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: rgba(0,0,0,0.25);
+    }
   </style>
 </head>
 <body>
-  <h1>Hobbuy Blog</h1>
-  <h2>[固定]Webサイト開設！<small> - 2025.6.10</small></h2>
+  <header>
+    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
+    <nav>
+      <a href="#top">ページトップ</a>
+    </nav>
+  </header>
+
+  <section id="top"><h2><br>[固定]Webサイト開設！<small> - 2025.6.10</small></h2></section>
   <p>GitHub CopilotでWebサイトを作ってみました。<br>
     いやホント、技術の進歩はすごいよ。<br><br>
   

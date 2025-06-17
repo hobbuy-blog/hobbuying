@@ -58,13 +58,60 @@
     #cookie-consent-modal button:hover {
       background: #388e3c;
     }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .site-title {
+      color: #fff;
+      font-size: 1em;
+      letter-spacing: 0px;
+    }
+    .site-title a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav {
+      margin-left: 2em;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: rgba(0,0,0,0.25);
+    }
   </style>
 </head>
 
 <!-- Body -->
 <body>
-  <h1>Hobbuy Blog</h1>
-  <h2>Welcome to my blog</h2>
+<header>
+    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
+    <nav>
+      <a href="#top">ページトップ</a>
+      <a href="list">商品リスト</a>
+      <a href="article">記事一覧</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <section id="top"><h2><br>Welcome to my blog</h2></section>
   <p>皆さまこんにちは。
     管理者で中の人のhobbuy-blogです。読みは<ruby>hubbuy-blog<rt>ホバーイ・ブログ</rt></ruby>です。<br>
   ｢せっかくだから僕もブログを作りたい！｣という気持ちで開設しました。<br>
@@ -84,7 +131,7 @@
     <li><a href="introduction/introduction.html">[固定]自己紹介と活動内容</a></li>
   </ul>
 
-  <h2>商品リスト</h2>
+  <section id="list"><h2>商品リスト</h2></section>
   <p>持っている商品のリストです。<br>画像またはリンクをクリックすると当該ページに遷移します(記事作成が完了している商品のみ)。<br><b><u>この表は横スクロールによって更なる範囲を見ることができます。</u></b></p>
 
   <!-- Table : Width(Approx.)=100px * Contents Length -->
@@ -135,7 +182,7 @@
     <li><a href="ct-3/ct-3.html">AVHzY CT-3(USBテスター)をレビュー！</a></li>
   </ul>
 
-  <h2>目次</h2>
+  <section id="article"><h2>記事一覧</h2></section>
   <p>
     上に同じく新しい順に上から並んでいます。<br>
     投稿から時間の経過した記事はリスト下の折りたたみの中に入っています。
@@ -171,7 +218,7 @@
   </details>
   <hr>
 
-  <h2>お問い合わせフォーム</h2>
+  <section id="contact"><h2>お問い合わせフォーム</h2></section>
   <p>以下の項目を入力して[送信]を押してください。<br>
     また返答が遅くなる場合がありますが、その点はご容赦ください。<br>
   ※入力いただいた個人情報はお問い合わせに対する返答やこちらで対応する際の個人の識別のみに用います。</p>
