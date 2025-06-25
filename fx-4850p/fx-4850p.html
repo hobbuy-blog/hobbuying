@@ -133,22 +133,22 @@ Link style:
 
     先ほど言いましたが、<b>言語は割と最悪</b>なので、以下に例をあげようと思います。<br>
     <code>
-      "MONTE CARLO"↵
-      "    CALCULATE π"↵
-      {N}:P=N↵
-      Cls↵
-      "CALCULATING..."↵
-      A=1↵
-      D=0↵
-      E=1↵
-      Lbl 1↵
-      B=2*Ran#-1↵
-      C=2*Ran#-1↵
-      (B^2+C^2)≦1⇒D=D+1◺↵
-      Dsz N:N>0⇒Goto 1◺↵
-      Cls↵
-      "DONE."↵
-      "π="↵
+      "MONTE CARLO"↵<br>
+      "    CALCULATE π"↵<br>
+      {N}:P=N↵<br>
+      Cls↵<br>
+      "CALCULATING..."↵<br>
+      A=1↵<br>
+      D=0↵<br>
+      E=1↵<br>
+      Lbl 1↵<br>
+      B=2*Ran#-1↵<br>
+      C=2*Ran#-1↵<br>
+      (B^2+C^2)≦1⇒D=D+1◺↵<br>
+      Dsz N:N>0⇒Goto 1◺↵<br>
+      Cls↵<br>
+      "DONE."↵<br>
+      "π="↵<br>
       4*D/P
     </code>
     <br>
@@ -160,15 +160,15 @@ Link style:
     BASICなので、雰囲気で解読できるかもしれません。<br>
     最小限の動作に必要な部分のみですが、まぁ見比べてみてください。<br>
     <code>
-      INPUT N:P=N
-      Cls
-      A=1:D=0:E=1
-      LABEL 1
-      B=-1+ RND 2
-      C=-1+ RND 2
-      IF (SQU B)+(SQU C)<=1
-      THEN D=D+1
-      N=N-1:IF N>0 THEN GOTO 1
+      INPUT N:P=N<br>
+      Cls<br>
+      A=1:D=0:E=1<br>
+      LABEL 1<br>
+      B=-1+ RND 2<br>
+      C=-1+ RND 2<br>
+      IF (SQU B)+(SQU C)<=1<br>
+      THEN D=D+1<br>
+      N=N-1:IF N>0 THEN GOTO 1<br>
       4*D/P
     </code>
     <br>
