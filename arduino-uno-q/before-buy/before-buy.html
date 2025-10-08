@@ -117,9 +117,49 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>Arduino UNO Qこれ如何に．<small> - 2025.10.8</small></h2></section>
   <p>
-    body
+    つい先日，Arduino UNO Qというなにやら怪しいものが発表されました．<br>
+    これはArduinoがQualcommに買収されたことに伴う新製品発表で，なかなか斬新なリリースのようにも思います．<br>
+    しかしその真相はどうなのでしょうか．<br>
+    今回は発売前の情報をゆるーくまとめていこうと思います．<br>
+
+    <image src="./../arduino-uno-q.webp" width="360" alt="Arduino UNO Q" border="0px">
+
+    <br>
+    まず，大まかなスペックです．
+    MPU(プロセッサ)にはQualcomm製プロセッサが載ります．<br>
+    ARM Cortex-A53のクアッドコア，周波数は2.0GHzです．<br>
+    A53で2.0GHzというのはあまり見ない数字ですね，1.8GHzまでが多いように感じます．<br>
+    そして標準モデルではRAMとストレージがLPDDR4X 2GBのeMMC 16GB，Debianがプリインストールされているようです．<br>
+    もう1つ高いモデルは4GB/32GBと標準的なシングルボードコンピュータと同等の容量になります．<br>
+    ラズパイの4Bくらいにまで迫りそうなスペック感です．<br><br>
+
+    そしてMCU(マイコン)にはSTMのARM Cortex-M33の160MHzが載ります．<br>
+    R4ではM4の48MHzだったので進化しているようです．<br><br>
+
+    さてここで問題です．<br>
+    今回の製品はArduino Classic系のモデルです．<br>
+    そしてこの系列のボードはペリフェラルが貧弱なことで有名です．<br>
+    というか全てが貧弱だったはずです．<br>
+    どうカバーするのでしょうか．<br>
+    というか画面はどう出力するんだ，と．<br><br>
+
+    なんと，画面はUSB-Cからの出力です．<br>
+    今までに存在した数々のシングルボードコンピュータは基本的にHDMIかDSIコネクタでした．<br>
+    Arduinoは何を間違えたのか，Cで出力できるようにしてしまったようです．<br>
+    しかしCには電源入力も割り振られているうえ，5V3Aの電源を要します．<br>
+    どさくさに紛れてDCジャックも消えてしまいました．<br>
+    USBハブでも使うんでしょうか．<br>
+    マイコンボード(設定上)のただ1つのUSBポートに，OTG変換を挿すことは聞いたことがありますがUSBハブは前代未聞ですね…<br><br>
+
+    ちなみに本体の裏に拡張コネクタがあって，こちらがメインと捉えるのが良さそうですね．<br>
+    完全に今までのArduinoの系譜は絶たれてしまいました．<br>
+    コミュニティも再建が必要かもしれません．<br>
+    これからどうなっていくんでしょうか…<br><br>
+
+    <b>出典</b><br>
+    <a href="" target="_blank" rel="noopener noreferrer">Arduino UNO Q販売ページ</a>
   </p>
   <a href="../index.html">←メインページに戻る</a>
 
