@@ -120,8 +120,21 @@ Link style:
   <section id="top"><h2>2.ArduinoのIO速度を測る<small> - 2025.10.28</small></h2></section>
   <p>
     前回の記事に続き，今回はArduinoのIOの速度を測っていきます．<br>
-    手元にはDueしかないのですが，RA4M1マイコンのボードが必要なり
+    手元にはDueしかないのですが，RA4M1マイコンのボードが必要になり，Uno R4 Minimaの互換ボードを購入しました．<br>
+    だからと言って互換品を大いにお勧めすることはできないので純正品の購入リンクを貼っておきます．<br><br>
+
+    <a href="https://www.amazon.co.jp/dp/B0C78K4CD4?tag=bockkring-22" target="_blank" rel="noopener noreferrer">Arduino Uno R4 Minima(純正)の購入はこちらから！</a><br><br>
+
+    前回の記事でも述べましたが，このボードのRA4M1マイコンは最大14 bitの高性能ADCを搭載しています．<br>
+    この高性能ADCを活用するためには，以下の処理が必要になります．
   </p>
+  <div style="background-color: #000; color: #fff; font-family: Courier; padding-top: 1em; padding-bottom: 1em;">
+    <code>
+        void setup() {
+            analogReadResolution(14);
+        }
+    </code>
+  </div>
   <div>
     <div align="left"><a href="./geiger-about.html">前回の記事</a></div>
     <div align="right">次回の記事なし</div>
