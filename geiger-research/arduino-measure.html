@@ -130,11 +130,17 @@ Link style:
   </p>
   <div style="background-color: #000; color: #fff; font-family: Courier; padding-top: 1em; padding-bottom: 1em;">
     <code>
-        void setup() {
-            analogReadResolution(14);
+        void setup() {<br>
+            <span style="padding-left: 2em;">analogReadResolution(14);</span><br>
         }
     </code>
   </div>
+  <p>
+    この<code>analogReadResolution()</code>関数でADCの読み取りビット数を指定します．<br>
+    このADCは<b>ハードウェア14 bit</b>で，後からビット処理で10 bitに落としていると考えられます．<br>
+    ですが，そのことをすっかり忘れてADCの速度をビット数ごとに測ってみました．<br>
+    が，どれも同じだったので数字だけ言っておきます．
+  </p>
   <div>
     <div align="left"><a href="./geiger-about.html">前回の記事</a></div>
     <div align="right">次回の記事なし</div>
