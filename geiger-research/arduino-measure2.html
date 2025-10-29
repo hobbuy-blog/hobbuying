@@ -158,34 +158,7 @@ Link style:
     </code>
   </pre>
   <p>
-    Dueの時は<code>digitalWrite()</code>関数を使っていたのですが，Unoでは調子が悪くてうまく測定できませんでした．/*
-==ArduinoのIO速度測定コード==
-A0ピンに電圧を入力し，閾値(トリガ電圧)を上回るとD9ピンから電圧を出力し，下回ると出力を切る
-
-ピンのステータスはSerialで出力
-デバッグ用のため，消しても可
-*/
-
-void setup() {
-  Serial.begin(115200); // 115200baudで通信を開始
-  analogReadResolution(12); // 12bit ADCでないボードの際は行をコメントアウトする
-}
-
-void loop() {
-  float value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出　※3.3V系マイコンの際は5.0を3.3に変更すること
-
-  if (value >= 2) { // トリガ電圧の2は希望の電圧に設定してもOK
-    analogWrite(9, 255); // PWMを出力(変調なし・IO電圧をそのまま出力)
-    // Serial.println("HIGH"); // Serial経由で電圧出力「入」状態を記録(デバッグ用)
-
-    while (value >= 2) { // 入力電圧がトリガ電圧を下回るまで繰り返す　※鳥が電圧は上と揃えること
-      value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出
-    }
-
-    analogWrite(9, 0); // PWM出力を切る
-    // Serial.println("LOW"); // Serial経由で電圧出力「切」状態を記録(デバッグ用)
-  }
-}
+    Dueの時は<code>digitalWrite()</code>関数を使っていたのですが，Unoでは調子が悪くてうまく測定できませんでした．<br>
   </p>
   <a href="../index.html">←メインページに戻る</a>
 
