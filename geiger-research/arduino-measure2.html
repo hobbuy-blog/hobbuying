@@ -117,9 +117,75 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>3.ArduinoのIO速度を測る②<small> - 2025.10.30</small></h2></section>
   <p>
-    body
+    前回の記事に引き続き，ArduinoのIO速度を測定していきます．<br>
+    前回のときはArduino Uno R4 Minimaとコードの相性問題，そして速度の問題が発生したためDueでしか測定できませんでした．<br>
+    今回は修正版コードで実行したため，前回とは少しデータの質が違うかもしれませんが，参考にする値で，大まかな速度を知りたいだけなので問題ありません．<br><br>
+
+    まず，コードを掲載します．
+  </p>
+  <pre style="background-color: #000; color: #fff; padding-top: 0.5em; padding-bottom: 0.5em;">
+    <code>
+      /*
+      ==ArduinoのIO速度測定コード==
+      A0ピンに電圧を入力し，閾値(トリガ電圧)を上回るとD9ピンから電圧を出力し，下回ると出力を切る
+      
+      ピンのステータスはSerialで出力
+      デバッグ用のため，消しても可
+      */
+      
+      void setup() {
+        Serial.begin(115200); // 115200baudで通信を開始
+        analogReadResolution(12); // 12bit ADCでないボードの際は行をコメントアウトする
+      }
+      
+      void loop() {
+        float value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出　※3.3V系マイコンの際は5.0を3.3に変更すること
+
+        if (value >= 2) { // トリガ電圧の2は希望の電圧に設定してもOK
+          analogWrite(9, 255); // PWMを出力(変調なし・IO電圧をそのまま出力)
+          // Serial.println("HIGH"); // Serial経由で電圧出力「入」状態を記録(デバッグ用)
+
+          while (value >= 2) { // 入力電圧がトリガ電圧を下回るまで繰り返す　※鳥が電圧は上と揃えること
+            value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出
+          }
+
+          analogWrite(9, 0); // PWM出力を切る
+          // Serial.println("LOW"); // Serial経由で電圧出力「切」状態を記録(デバッグ用)
+        }
+      }
+    </code>
+  </pre>
+  <p>
+    Dueの時は<code>digitalWrite()</code>関数を使っていたのですが，Unoでは調子が悪くてうまく測定できませんでした．/*
+==ArduinoのIO速度測定コード==
+A0ピンに電圧を入力し，閾値(トリガ電圧)を上回るとD9ピンから電圧を出力し，下回ると出力を切る
+
+ピンのステータスはSerialで出力
+デバッグ用のため，消しても可
+*/
+
+void setup() {
+  Serial.begin(115200); // 115200baudで通信を開始
+  analogReadResolution(12); // 12bit ADCでないボードの際は行をコメントアウトする
+}
+
+void loop() {
+  float value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出　※3.3V系マイコンの際は5.0を3.3に変更すること
+
+  if (value >= 2) { // トリガ電圧の2は希望の電圧に設定してもOK
+    analogWrite(9, 255); // PWMを出力(変調なし・IO電圧をそのまま出力)
+    // Serial.println("HIGH"); // Serial経由で電圧出力「入」状態を記録(デバッグ用)
+
+    while (value >= 2) { // 入力電圧がトリガ電圧を下回るまで繰り返す　※鳥が電圧は上と揃えること
+      value = analogRead(A0) * 5.0 / 4095.0; // アナログ入力値から電圧を算出
+    }
+
+    analogWrite(9, 0); // PWM出力を切る
+    // Serial.println("LOW"); // Serial経由で電圧出力「切」状態を記録(デバッグ用)
+  }
+}
   </p>
   <a href="../index.html">←メインページに戻る</a>
 
