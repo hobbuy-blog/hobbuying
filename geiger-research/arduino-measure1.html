@@ -128,13 +128,11 @@ Link style:
     前回の記事でも述べましたが，このボードのRA4M1マイコンは最大14 bitの高性能ADCを搭載しています．<br>
     この高性能ADCを活用するためには，以下の処理が必要になります．
   </p>
-  <div style="background-color: #000; color: #fff; font-family: Courier; padding-top: 0.5em; padding-bottom: 0.5em;">
-    <code>
-        void setup() {<br>
-            <span style="padding-left: 2em;">analogReadResolution(14);</span><br>
-        }
-    </code>
-  </div>
+  <pre style="background-color: #000; color: #fff; font-family: Courier; padding-top: 0.5em; padding-bottom: 0.5em;"><code>
+  void setup() {
+    analogReadResolution(14);
+  }
+  </code></pre>
   <p>
     この<code>analogReadResolution()</code>関数でADCの読み取りビット数を指定します．<br>
     このADCは<b>ハードウェア14 bit</b>で，後からビット処理で10 bitに落としていると考えられます．<br>
