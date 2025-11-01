@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="中の人が買ったものを紹介したり、作ったものを紹介したりと自由気ままに書いているブログです。">
+  <meta name="description" content="放射線測定器を作るために必要な部品を買い揃えた記録です．">
   <meta name="keywords" content="研究, ブログ, 放射線測定器, 評価, プログラム, Arduino, 設計, 電気, 電子工作">
   <!-- Change tags in "keywords" -->
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>Hobbuy Blog | 趣味と購入のブログ</title>
+  <title>放射線測定器の部品 | Hobbuy Blog</title>
   <style>
     html {
       scroll-padding-top: 100px;
@@ -117,13 +117,34 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>放射線測定器に使う部品を買い揃える<small> - 2025.11.1</small></h2></section>
   <p>
-    <br>
+    今回は，部品を買い揃えていきます．<br>
+    と言っても，全てを買うわけではありません．<br>
+    部品の特性を知るための予備実験に使う部品だけです．<br>
+    具体的には<b>SiPDと低ノイズ電源だけ</b>です．<br><br>
+
+    SiPDは浜松ホトニクス(浜ホト)のS5821-02，千円強のフォトダイオードです．<br>
+    シンチレーターが発する光の波長は425 nmなのですが，その波長における感度は0.2 A/Wです．<br>
+    一般的な価格で，赤外線・可視光線・紫外線に対応する高性能気味なSiPDを選んでみました．<br>
+    いつもなら秋月電子の通販で買いますが，SiPDは秋月の苦手分野なのでマルツオンラインで買います．<br>
+    入射角は最大で約70°です．<br>
+    そこそこ広角なので今回の用途には耐えられると信じています．<br><br>
+
+    また併せて低ノイズ電源の部品も買いました．<br>
+    使うSiPDの最大逆方向電圧は20 Vで，使う電源はArduinoのIOに揃えて5 Vです．<br>
+    一応，作動入力を目指しますがノイズまみれはあまり良くないと思います．<br>
+    ですから，予備実験の測定用に小さな低ノイズ電源モジュールを作ります．<br>
+    作ったら1本の独立記事を投稿しますが，日清紡のNJM7805を使っています．<br>
+    家に電解コンとフィルムキャパシタは有り余っているので，キャパシタはそれらを使います．<br>
+    45基板にNJM7805と放熱器，電源入力のDCジャック，出力のターミナル，そして適宜キャパシタ，みたいな構成になると思います．<br><br>
+
+    続報をお待ちください．<br>
+    なにせ届くのに1週間かかりますから．
   </p>
   <div>
-    <div align="left"><a href="./">← 前回:</a></div>
-    <div align="right"><a href="./">次回: →</a></div>
+    <div align="left"><a href="./arduino-measure2.html">← 前回:ArduinoのIO速度を測る②</a></div>
+    <div align="right">次回:なし</div>
   </div>
   <br>
   <a href="./geiger-index.html">←目次へ戻る</a>
