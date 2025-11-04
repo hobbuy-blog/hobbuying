@@ -117,13 +117,31 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>5.回路図を作る中で得られた気付き<small> - 2025.11.4</small></h2></section>
   <p>
-    <br>
+    放射線測定器を作る研究に関する記事もかれこれ連載5本目です．<br>
+    裏ではひっそりと回路図も書き進めていたのですが，現時点である程度完成したので得られた気付きを記しておこうと思います．<br><br>
+
+    まず，<b>SiPDは逆バイアスをかけて使う</b>ことでした．<br>
+    僕自身，SiPDを使う回路の設計が初めてで，今回初めて知りました．<br>
+    実は<a href="https://www.rcnp.osaka-u.ac.jp/~ota/group/?Member" target="_blank" rel="noopener noreferrer">小林信之准教授(大阪大学・核物理研究センター)</a>と共に研究を進めさせていただいています．<br>
+    その小林先生に回路案を送って修正点などを教えていただいていたのですが，そこで初めて知りました．<br><br>
+
+    そして<b>シェーピングアンプが必要</b>ということも教えていただきました．<br>
+    シェーピングアンプというのは信号を矩形波状にすることで継続時間を伸ばすものだそうです．<br>
+    ArduinoのIO速度を測った結果を書き残した<a href="./arduino-measure1.html">第1回</a>と<a href="./arduino-measure2.html">第2回</a>の記事で分かったようにどれだけ高性能なArduinoでもサンプリングレートは落ちてしまうのです．<br>
+    それを解決するためにシェーピングアンプで信号の継続時間を伸ばして検出しやすくするのです．<br><br>
+
+    ただシェーピングアンプを用いるとエネルギー計測ができなくなってしまう，厳密に言うと<b>精度もクソも無くなってしまう</b>ので，できれば避けたいと考えています．<br>
+    ゆえに，<a href="./parts-prepare.html">部品購入記録</a>で書いたようななるべく安価で高性能なSiPDを選んでみて，まずはシェーピングアンプ無しで実験を進める予定です．<br>
+    この実験は<a href="./../2c53t/2c53t-index.html">2C53T</a>で進めると精度の良いデータが取れないので，大学の設備を借りる予定です．<br>
+    ホント，小林先生には感謝しかないですわ…<br><br>
+
+    っちゅうことで記事を書いている時点では部品待ち状態なので，部品が届いたら次の記事を書くことにします．
   </p>
   <div>
-    <div align="left"><a href="./">← 前回:</a></div>
-    <div align="right"><a href="./">次回: →</a></div>
+    <div align="left"><a href="./parts-prepare.html">← 前回:放射線測定器に使う部品を買い揃える</a></div>
+    <div align="right">次回:なし</div>
   </div>
   <br>
   <a href="./geiger-index.html">←目次へ戻る</a>
