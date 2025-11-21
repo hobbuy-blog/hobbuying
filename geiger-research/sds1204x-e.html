@@ -117,13 +117,35 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>大学からSIGLENT SDS1204X-Eを借りた<small> - 2025.11.21</small></h2></section>
   <p>
-    <br>
+    少し期間が空きましたね，部品待ちやらで空いてしまいました．<br>
+    その間に大学の方からオシロスコープを借りたので，体感を確かめてみようと思います．<br><br>
+
+    今回借りたのはSIGLENT SDS1204X-Eという機種です．<br>
+    なんでやねんとツッコまれそうですが，僕はSIGLENTオシロの操作感が気に入っています．<br>
+    ちなみに，Teledyne LeCroy型番だとT3DSO1204になります．<br>
+    というのも<b>SIGLENTはTeledyne LeCroyにハードウェアを提供</b>し，<b>Teledyne LeCroyはSIGLENTに技術指導とファームウェア提供</b>をしているのです．<br>
+    最近は共同開発もしているらしいですね．<br>
+    個人的には中華オシロで最も信頼しているメーカーです．<br><br>
+
+    そんなオシロで，スペックもエントリー機としては高めです．<br>
+    ADCはCh1/2とCh3/4でそれぞれ共有(インターリーブ)し，最大サンプリングレートはCh1/3有効(非インターリーブ)時の1 GSa/s，またADC共有(インターリーブ)時の500 MSa/sです．<br>
+    RIGOLより強いのがいいところです．<br><br>
+
+    ただ，実際に机に置いてわかったのは<b>大きすぎる</b>ことでした．<br>
+    Arduinoへの書き込みやデータ処理をするPCと安定化電源，そしてオシロスコープを置くと<b>もうブレッドボードを置く場所も残っていない</b>のです．<br>
+    ということで，泣く泣く別の機種に変更することになりました．<br>
+    もう1つのオシロはRIGOL DHO924Sです．<br>
+    僕としてはあんまりRIGOLは好きじゃないんですけどねぇ…<br><br>
+
+    また，4ch動作時(2ch差動時)のサンプリングレートもRIGOLは312.5 MSa/sしかでません．<br>
+    SIGLENTの方が基本性能がしっかりしていて好きです．<br>
+    ただ場所がないので仕方ないですね…
   </p>
   <div>
-    <div align="left"><a href="./">← 前回:</a></div>
-    <div align="right"><a href="./">次回: →</a></div>
+    <div align="left"><a href="./circuit.html">← 前回:回路図を作る中で得られた気付き</a></div>
+    <div align="right">次回:なし</div>
   </div>
   <br>
   <a href="./geiger-index.html">←目次へ戻る</a>
