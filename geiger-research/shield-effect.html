@@ -117,9 +117,38 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>8.シールドの効果を<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>8.シールドの効果を確かめる<small> - YYYY.MM.DD</small></h2></section>
+  <p>
+    この前，<a href="./dho924s.html">RIGOL DHO924Sを徹底的に叩いた</a>わけで，結局SIGLENT SDS1204X-Eを使うことにしました．<br>
+    ということで使うオシロスコープも確定したので順調に予備データを集めていきます．<br><br>
+
+    今回，確認するのはシールドの効果です．<br>
+    よく，シールドケーブルなどの形でシールドを使うことはあると思います．<br>
+    ただ僕自身があまり使ったことがなくて感覚が分からないですし，<b>もし効果がないのならシールドは不要</b>です．<br>
+    Arduino.ccがQualcommに買収されて利用規約を書き換えが進んでいるそうで，もしかするとArduino Nano R4の互換機は出ないのかもしれない，という危機が迫っているので価格を抑えることは重要です．<br>
+    感覚的に，RA4M1搭載互換機は本家から買うより1個あたり1,000円程度は安くなるのですが，それができないと他のところで価格を抑えるしかありません．<br><br>
+
+    ということでまずはノイズ源です．<br>
+    ノイズ源といえばiPadなので(？)，iPadを使います．<br>
+    この時コツがあって，<b>Touch IDを使うと優秀なノイズ源になる</b>ことを利用します．<br>
+    ノイズは3.5 mmミニジャックで引き出します．<br>
+    多分GNDに盛大なノイズが乗るので，パッシブプローブの先端をミニジャックに差し込む，というより穴にあてがう形でセットします．<br>
+    その時，以下のAAの様な構図になっています．<br>
+  </p>
+  <div style="max-height: 100%; max-width: 100%; overflow: auto; border: 0px solid; padding: 0.5em; background-color: #000; color: #fff;">
+    <pre style="font-family: Courier;">            ┌───── Alminum Foil ───────────  >────┐ Ground Lead          </pre><br>
+    <pre style="font-family: Courier;">            │┌──── Kimwiper ─────────             │ ├────────────────────</pre><br>
+    <pre style="font-family: Courier;">┌────────── ││   ┌──┬───┬───────────────────────┼─┼─┤                    </pre><br>
+    <pre style="font-family: Courier;">|MiniJack   ││ ──┤  │   │                       │ │ │ Passive Probe      </pre><br>
+    <pre style="font-family: Courier;">└────────── ││   └──┴───┴───────────────────────┼───┤                    </pre><br>
+    <pre style="font-family: Courier;">            │└───────────────────────               ├────────────────────</pre><br>
+    <pre style="font-family: Courier;">            └──────────────────────────────                              </pre><br>
+  </div>
   <p>
     <br>
+    AAとして見やすいかは知りませんが，模式図としては十分だと思います．<br>
+    ミニジャックの穴に対して，シールド用のアルミホイル(Alminum Foil)と，プローブチップ絶縁用のキムワイプ(Kimwiper)を被せたパッシブプローブ(Passive Probe)を突き刺します．<br>
+    グラウンドリード(Ground Lead)をアルミホイルに接続するかしないかで，シールドの有無を切り替えます．
   </p>
   <div>
     <div align="left"><a href="./">← 前回:</a></div>
