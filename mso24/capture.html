@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tektronix MSO24をレビューしています．">
+  <meta name="description" content="Tektronix MSO24の波形取り込みモードとその違いを紹介しています．">
   <meta name="keywords" content="レビュー, ブログ, MSO2, MSO24, Tektronix, テクトロニクス, オシロスコープ, 電気, 電子工作, FFT">
   <!-- Change tags in "keywords" -->
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>MSO24レビュー | Hobbuy Blog</title>
+  <title>MSO24取り込みモード | Hobbuy Blog</title>
   <style>
     html {
       scroll-padding-top: 100px;
@@ -117,10 +117,12 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>5.Tektronix MSO24の取り込みモードの違い<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>5.Tektronix MSO24の取り込みモードの違い<small> - 2026.1.13</small></h2></section>
   <p>
     今回は取り込みモードの違いに触れようと思います．<br>
-    ここで紹介するモードはSample/Peak Detect/Average/High Res/Envelopeです．<br><br>
+    ここで紹介するモードはSample/Peak Detect/Average/High Resです．<br>
+    Envelopeだけはどういうものなのか説明できないので逃げます．<br>
+    許してください．<br><br>
 
     <b>1.Sample</b><br>
     基本的な取り込みモードです．<br>
@@ -131,7 +133,42 @@ Link style:
     ただ波形の外形は掴めているので，基本的に問題はなさそうです．<br><br>
 
     <b>2.Peak Detect</b>
-    Peak Detectはアクイジション方法が少し特殊です．
+    Peak Detectはアクイジション方法が少し特殊です．<br>
+    これはメモリ長も制限などによってサンプリングレートが落ちている時にその能力を発揮します．<br><br>
+
+    時間軸(s/div)を大きくして10 kSa/sまで落ちていると仮定します．<br>
+    Sampleモードでは単純に1秒間に10,000サンプルしか取れません．<br>
+    ここでPeak Detectモードを使うと2つの隣り合ったサンプル間を最大サンプリングレートで取り込み，その最大値と最小値をサンプル点とします．<br>
+    これによって異常波形を確実に取り込みできる，というわけです．<br>
+    その特性上，見かけのリプル振幅は大きくなります．<br>
+    <img src="./resource/peak-detect.png" width="360px" alt="Peak Detect"><br><br>
+
+    <b>3.Average</b><br>
+    これはサンプル点を平均し続けるモードです．<br>
+    荒ぶりがちな波形を安定させられ，また外部からノイズの振幅を小さくできます．<br>
+    ただこれは見かけ上のものであって，波形の忠実性は失われててしまうので注意が必要です．<br>
+    異常波形や突発波形を取り込むというよりは，定常的に存在する小さな振幅の信号を見やすくするためのモードと思って問題ないと思います．<br>
+    平均値を求め続ける以上，機種によっては動作がモッサリしますがMSO24はへっちゃらでした．すげぇ<br>
+    <img src="./resource/avg2.png" width="50%" alt="Average(2)"><img src="./resource/avg64.png" width="50%" alt="Average(64)"><br>
+    左側が2回，右側が64回の平均値を取っています．<br>
+    2回のものではノイズ性能が多く見えてみますが，64回のものでは定常的な小振幅の信号が見えています．<br>
+    <img src="./resource/avg10240.png" width="50%" alt="Average(10240)"><br>
+    さらに回数を10,240回まで増やすとさらにノイズ成分が少なくなります．<br>
+    Averageモードは使い方に左右されますが，なかったらなかったで困るモードです．<br><br>
+
+    <b>4.High Res</b><br>
+    何かしらの処理を通してADCの電圧分解能を向上させるモードです．<br>
+    何らかの処理というのは，平均処理なのですがAverageモードとは一味違います．<br>
+    Averageモードは定常的な波形にしか使えませんが，High Resモードは突発波形にも使えます．<br>
+    Peak Detectモードで言った，2サンプルの間を最高速度でサンプリングして，その区間の平均値を取ります．<br>
+    波形がなまったり，時間軸設定によってはサンプリングレートが落ちますが，ノイズを手っ取り早く減らせます．<br>
+    <img src="./resource/highRes.png" width="360px" alt="High Res"><br>
+    ノイズは減っていますが波形はなまったように見えます．<br>
+    ただ，以下のようにノイズに埋もれたオーバーシュートが見えることもあって欠点ばかりではありません．<br>
+    <img src="./resource/edge-sample.png" width="50%" alt="Edge(Sample)"><img src="./resource/edge-highRes.png" width="50%" alt="Edge(High Res)"><br>
+    立ち下がり前のオーバーシュートのような波形は，右側のHigh Resモードでははっきり見えています．<br><br>
+
+    以上，Envelopeを除いた取り込みモードの紹介でした．
   </p>
   <a href="./index.html">←目次に戻る</a><br>
   <a href="../index.html">←メインページに戻る</a>
