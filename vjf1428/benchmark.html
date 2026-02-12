@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="中の人が買ったものを紹介したり、作ったものを紹介したりと自由気ままに書いているブログです。">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, プログラム, 電卓, 関数電卓, 電気, 電子工作">
+  <meta name="description" content="VAIO VJF1428(カスタムモデル)のベンチマーク測定をしました．Cinebench R15とCrystal Disk Markの2ソフトで検証しましたが，非常に良いスコアを残しました．">
+  <meta name="keywords" content="レビュー, ブログ, ノート+パソコン, 評価, ベンチマーク, PC, VAIO, F14, VJF142">
   <!-- Change tags in "keywords" -->
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>Hobbuy Blog | 趣味と購入のブログ</title>
+  <title>VAIOベンチマーク | Hobbuy Blog</title>
   <style>
     html {
       scroll-padding-top: 100px;
@@ -117,9 +117,36 @@ Link style:
     </nav>
   </header>
 
-  <section id="top"><h2>Title<small> - YYYY.MM.DD</small></h2></section>
+  <section id="top"><h2>新VAIOのベンチマーク測定をする<small> - 2026.2.12</small></h2></section>
   <p>
-    body
+    ということで新VAIOのベンチマーク測定をしていきます．<br>
+    使うソフトは古く良き2つ，Cinebench R15とCrystal Disk Markです．<br>
+    前者に関しては「今更Cinebench　R15かよ」と突っ込まれそうですが，R15しか使ってこなかったので，またR15が1番使われてきたのでこれを使います．<br>
+    負荷が程よいのでいつもこればっかり使っています．<br><br>
+
+    <img src="./resource/cinebench.jpeg" width="100%" alt="Cinebench R15"><br>
+    こちらCinebenchです．<br>
+    なんか普通にスコアは健闘していると思います．<br>
+    マルチコアで1431 cbなので，普通に良いスコアです．<br>
+    デスクトップCPUならIntel第10世代のIntel Core i5 10400くらいに相当します．<br>
+    そしてシングルコアでも262 cb，えぇっと…<b>これは旧VAIOのマルチコアのスコアくらいに相当</b>します…<br>
+    よく頑張ってきたもんです．<br>
+    OpenGLの82.26 fpsも，内蔵GPU(iGPU)にしては相当に良いスコアだと思います．<br>
+    なんてったってTDPが15 WのCPUですからね．<br>
+    めちゃくちゃ快適です．<br><br>
+
+    <img src="./resource/diskmark.png" width="100%" alt="Crystal Disk Mark"><br>
+    SSDの速度です．<br>
+    シーケンシャルリード5005.20 MB/s，シーケンシャルライト3670.64 MB/sとかいう見たことのない数字を叩き出しています．<br>
+    スコアが異次元すぎて，もはや排熱が間に合っているかの方が心配です．<br>
+    そりゃぁ全てが快適ですよね．<br><br>
+
+    <hr>
+    <br>
+
+    (…まぁ，恐ろしく重い3DモデルをSTEP形式で書き出すと流石にフリーズしました．そりゃそうですよ，他のソフトも起動していたんですから)<br>
+    <img src="./resource/fusion-freeze.png" width="100%" alt="Autodesk Fusionがフリーズした様子．描写のバグを伴っている．">
+
   </p>
   <a href="../index.html">←メインページに戻る</a>
 
