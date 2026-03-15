@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="放射線計測機の政策に向けて，入手したArduino Nano R4の動作確認でLチカをしました．Nano R4では今までの文化が通じない点もあり，多少の困惑も含め，LEDチカに成功しました．">
+  <meta name="keywords" content="研究, ブログ, 放射線測定器, 評価, プログラム, Arduino, 設計, 電気, 電子工作">
+  <!-- Change tags in "keywords" -->
+  <meta name="author" content="Hobbuy-Blog, bockring">
+
+  <title>Hobbuy Blog | 趣味と購入のブログ</title>
+  <style>
+    html {
+      scroll-padding-top: 100px;
+    }
+    body {
+      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
+      background: #fafafa;
+      color: #222;
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 1rem;
+      line-height: 1.7;
+      padding-top: 70px;
+    }
+    h1 {
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3em;
+    }
+    a {
+      color: #0055a4;
+    }
+    #cookie-consent-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.65);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    #cookie-consent-modal {
+      background: #fff;
+      color: #222;
+      padding: 2em 2em 1.5em 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      text-align: left;
+      max-width: 90vw;
+      width: 350px;
+    }
+    cookie-consent-modal button {
+      margin-top: 1em;
+      padding: 0.7em 2em;
+      background: #fff;
+      color: #f20;
+      border: none;
+      border-radius: 5px;
+      font-size: 2em;
+      cursor: pointer;
+    }
+    #cookie-consent-modal button:hover {
+      background: #fff;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .site-title {
+      color: #fff;
+      font-size: 1em;
+      letter-spacing: 0px;
+    }
+    .site-title a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav {
+      margin-left: 2em;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<!-- 
+Link style:
+ Inside of page : <a href="folderpath/filepath"></a>
+ Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
+2nd type is a type that open in new window
+-->
+<body>
+  <header>
+    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
+    <nav>
+      <a href="#top">ページトップ</a>
+    </nav>
+  </header>
+
+  <section id="top"><h2>11.Arduino Nano R4が届いたのでLチカする<small> - 2026.3.15</small></h2></section>
+  <p>
+    お久しぶりです．<br>
+    またもや長い期間が空いてしまいましたが，研究は着々と進んでいます．<br>
+    試作1号機の基板と部品の発注を終え，それらが手元にある状態です．<br>
+    ということでまずArduino Nano R4について備忘録を残しておこうと思います．<br><br>
+
+    まず，最初に動作確認で行うことで有名なLチカですが，まず今までとは違うところに引っかかりました．<br>
+    <a href="https://docs.arduino.cc/hardware/nano-r4/?queryID=4fd68013badefc36c24e4a7dc712e378" target="_blank" rel="noopener noreferrer">Nano R4のデータシート</a>を見れば書いてあることなのですが，内蔵LEDのピンが変更になっています．<br>
+    今まではD13ピンがLと記された内蔵LEDに接続されていました．<br>
+    またこれが伝統とされてきましたし，Uno R4 Minimaでも同様にD13に接続されていました．<br>
+    ですがNano R4では<code>LED_BUILTIN</code>という名称の独立ピンに変更されています．<br>
+    初回の書き込み時にLチカが動作しなくて普通に焦りました．<br>
+    ですからLチカスケッチは以下のようになります．<br>
+  </p>
+<code><pre>
+/* このスケッチはArduino Nano R4用のLチカスケッチです */
+void setup () {
+  // セットアップなし
+}
+
+void loop () {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
+}
+</pre></code>
+  <p>
+    ちょっと面倒くさいなというのが正直な感想です．<br><br>
+
+    また，Nano R4にはオンボードRGB LEDがあるのですがこいつも少しクセがあります．<br>
+    同じくデータシートを見てみると赤，緑，青の順に<code>LEDR</code>，<code>LEDG</code>，<code>LEDB</code>とピン名が振られていることが分かります．<br>
+    ただし先ほどの<code>LED_BUILTIN</code>と違って，出力モード固定ではありませんから，<code>pinMode()</code>関数で出力モードを指定してやる必要があります．<br>
+    そして<b>アクティブLOW</b>という仕様のため，ピンのHIGH/LOWは直感とは逆になります．<br>
+    つまり<code>digitalWrite(LEDR, LOW);</code>としたときにLEDR(赤)は点灯するわけです．<br>
+    これを踏まえて，オンボードRGB LEDを赤→黄→緑→水→青→紫→白→消灯の順で光らせるコードは以下のようになります．
+  </p>
+  <detail>
+    <summary>ここをクリックして開く</summary>
+<code><pre>
+/* このスケッチはArduino Nano R4用のオンボードRGB LED点灯スケッチです */
+
+void setup() {
+  // 全ピンを出力モードに指定
+  pinMode(LEDR, OUTPUT);
+  pinMode(LEDG, OUTPUT);
+  pinMode(LEDB, OUTPUT);
+  
+  // 消灯
+  digitalWrite(LEDR, HIGH);
+  digitalWrite(LEDG, HIGH);
+  digitalWrite(LEDB, HIGH);
+}
+
+void loop() {
+  // 赤色
+  digitalWrite(LEDR, LOW);
+  delay(1000);
+
+  // 黄色
+  digitalWrite(LEDG, LOW);
+  delay(1000);
+
+  // 緑色
+  digitalWrite(LEDR, HIGH);
+  delay(1000);
+
+  // 水色
+  digitalWrite(LEDB, LOW);
+  delay(1000);
+
+  // 青色
+  digitalWrite(LEDG, HIGH);
+  delay(1000);
+
+  // 紫色
+  digitalWrite(LEDR, LOW);
+  delay(1000);
+
+  // 白色
+  digitalWrite(LEDG, LOW);
+  delay(1000);
+
+  // 黒色(消灯)
+  digitalWrite(LEDR, HIGH);
+  digitalWrite(LEDG, HIGH);
+  digitalWrite(LEDB, HIGH);
+  delay(1000);
+}
+
+</pre></code>
+</detail>
+  <p>
+    このような感じでRGB LEDを駆動することができました．<br><br>
+
+    ということでここまでArduino Nano R4を軽く触れてきましたが，<b>今までの文化が通じないな</b>と感じる部分がありました．<br>
+    ただし，従来通りC/C++ベースのArduino言語でスケッチを作成することに変わりはありません．<br>
+    オンボードの構成要素以外は大体今まで通りに扱える印象です．<br>
+    あとはやはり，<b>フットプリントの小ささ</b>は魅力的なのです．<br>
+    最も長い部分で測っても50 mmに満たない小ささです．<br>
+    それでいて30ピンもの端子(うちGPIOが22本)を引き出しているのは最早狂気としか言えないでしょう．<br><br>
+
+    たしかにRaspberry Pi Picoシリーズは強力な小型マイコンボードです．<br>
+    それに対して効率が悪く動作周波数も遅かったAVRマイコン搭載Arduino Nanoシリーズは見劣りするのは言うまでもありません．<br>
+    しかしNano R4ではARMマイコンです．Pico(初代)の133 MHzには及びませんが動作周波数も48 MHzと高くなっています．<br>
+    何よりADC分解能がPicoは12 bitに対してNano R4は14 bitです．<br>
+    そんなこの研究にもってこいのデバイスを見つけたわけですし，この先も研究を頑張っていこうと思います．
+  </p>
+  <div>
+    <div align="left"><a href="./pcb1.html">← 前回:放射線計測器の試作機1号を発注</a></div>
+    <div align="right">次回:なし</div>
+  </div>
+  <br>
+  <a href="./geiger-index.html">←目次へ戻る</a>
+  <a href="../index.html">←メインページに戻る</a>
+
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-overlay">
+    <div id="cookie-consent-modal">
+      <h2>Web閲覧にあたって</h2>
+      <p>
+        このWebサイトはCookieと<br>
+        Google Analyticsを使用しています。<br><br>
+
+        閲覧を続行するには同意してください。<br>
+        この表示は90日後に再び現れます。
+      </p>
+      <button id="accept-cookies">同意する</button>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    function loadGoogleAnalytics() {
+      var id = 'G-G9KZ4SE6QC';
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      document.head.appendChild(gaScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var consent = getCookie('cookie_consent');
+      if(consent === 'accepted') {
+        loadGoogleAnalytics();
+      } else {
+        var overlay = document.getElementById('cookie-consent-overlay');
+        overlay.style.display = 'flex';
+        document.getElementById('accept-cookies').onclick = function() {
+          setCookie('cookie_consent', 'accepted', 90);
+          overlay.style.display = 'none';
+          loadGoogleAnalytics();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
