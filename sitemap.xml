@@ -219,6 +219,12 @@
        <priority>0.8000</priority>
   </url>
   <url>
+       <loc>https://hobbuy-blog.github.io/hobbuying/m750/index.html</loc>
+       <lastmod>2026-09-07T13:23:37+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
        <loc>https://hobbuy-blog.github.io/hobbuying/index.html</loc>
        <lastmod>2026-03-20T13:02:08+00:00</lastmod>
        <changefreq>daily</changefreq>
