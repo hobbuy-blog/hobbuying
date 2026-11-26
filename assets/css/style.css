@@ -522,3 +522,17 @@ details.archive-details summary {
   padding-top: 1.2rem;
   border-top: 1px dashed var(--border-color);
 }
+/* EQ設定表などのアスキーアート（背景白・黒文字の等幅表示） */
+.post-body pre.eq-chart {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-family: "MS Gothic", "Osaka-Mono", ui-monospace, monospace;
+  line-height: 1.5;
+}
+
+/* 記事内の小さめ補足注釈 */
+.small-note {
+  font-size: 0.78em;
+  color: var(--text-muted);
+}
