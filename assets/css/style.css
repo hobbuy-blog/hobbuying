@@ -536,3 +536,28 @@ details.archive-details summary {
   font-size: 0.78em;
   color: var(--text-muted);
 }
+/* 画像の2枚横並びレイアウト */
+.figure-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.figure-row .post-figure {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+.figure-row .post-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* スマホ幅（640px以下）では見やすさ優先で縦並びに折り返す */
+@media (max-width: 640px) {
+  .figure-row {
+    flex-direction: column;
+  }
+}
