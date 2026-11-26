@@ -3,275 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VAIO F14 VJF1428を購入しました．ファーストインプレッションを書き残しています．">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, VAIO, F14, VJF142, パソコン, PC, ノート">
-  <!-- Change tags in "keywords" -->
+  <title>VJF1421(VAIO)購入 | Hobbuy Blog</title>
+  <meta name="description" content="Core 7 150U・RAM 32GB・1TB NVMe・Windows 11 Pro構成の新品ノートPC「VAIO F14 (VJF1428)」を購入！Explorer PatcherでのUIカスタマイズや筐体質感、キーボードの打鍵感、電源ボタン一体型指紋認証をレビューします。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, パソコン, ノートPC, VAIO, VAIO F14, VJF1428, Explorer Patcher">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>VJF1421(VAIO)購入 | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="VJF1421(VAIO)購入 | Hobbuy Blog">
+  <meta property="og:description" content="Core 7 150U・RAM 32GB・1TB NVMe・Windows 11 Pro構成の新品ノートPC「VAIO F14 (VJF1428)」を購入！Explorer PatcherでのUIカスタマイズや筐体質感、キーボードの打鍵感、電源ボタン一体型指紋認証をレビューします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/vjf1428/">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">VAIO F14 (VJF1428)を購入！<span class="post-date"> - 2026.1.26</span></h1>
+      </header>
 
-  <section id="top"><h2>VAIO F14 (VJF1428)を購入！<small> - 2026.1.26</small></h2></section>
-  <p>
-    遂に…！ちゃんと新品のパソコンを購入しました！！<br>
-    ということで今回の主役はVAIO F14 VJF1428です．<br>
-    詳しいレビューは後日に書きますが，ここでは概略とファーストインプレッションだけ書いておきます．<br>
-    新春セールの間に買ったので，ちょっと安く手に入りました．<br>
-    参考程度に，価格はソフトケース(3,000円)込みで<b>217,800円</b>でした．破産するって．※高校生<br><br>
+      <div class="post-body">
+        <p>
+          遂に…！ちゃんと新品のパソコンを購入しました！！<br>
+          ということで今回の主役はVAIO F14 VJF1428です．<br>
+          詳しいレビューは後日に書きますが，ここでは概略とファーストインプレッションだけ書いておきます．<br>
+          新春セールの間に買ったので，ちょっと安く手に入りました．<br>
+          参考程度に，価格はソフトケース(3,000円)込みで<strong>217,800円</strong>でした．破産するって．※高校生<br>
+          ちなみに構成はガッツリ盛っています．<br>
+          なにせ回路SIMソフト(LTspice)とかEDAソフト(KiCAD)とか3D CADソフト(Autodesk Fusion / Shapr3D)とかを同時起動しがちなので，RAMの量が欲しいわけです．<br>
+          昨今の価格高騰はありますがここだけは外せない．<br>
+          しっかり<strong>32 GB</strong>積んでいます．<br>
+          あとはPro版Windowsも外せません．<br>
+          そんなこんなで高級構成になってしまい，以下の構成です．
+        </p>
+        <ul>
+          <li>CPU : Intel Core 7 150U 10C12T (2P8E) | 1.8/5.4 GHz</li>
+          <li>RAM : LPDDR5X 32 GB</li>
+          <li>ROM : PCIe 4.0 (NVMe) 1 TB</li>
+          <li>OS : Windows 11 Pro</li>
+        </ul>
+        <p>
+          なかなか盛り盛り構成です．<br>
+          たぶんそこらの格安ゲーミングノートPCよりかは高いと思います．<br>
+          ただ，めちゃくちゃ作り込みと言うか，品質と質感が素晴らしいんですよね．<br>
+          初期セットアップを済ませたら，色々なソフトをインストールします．<br>
+          代表例は以下のとおりです．
+        </p>
+        <ul>
+          <li>Autodesk Fusion Personal</li>
+          <li>Shapr3D</li>
+          <li>KiCAD</li>
+          <li>Visual Studio Code</li>
+          <li>Affinity</li>
+        </ul>
+        <p>
+          他にもありますがこれくらいにしておきます．<br>
+          かれこれ全てのインストールに5時間くらいかかりました．<br>
+          ただ…これで終わりではないのです．<br>
+          <strong>Windows 11のカスUIを討伐しなければなりません</strong>．<br>
+          <!-- ※元HTMLのExplorer Patcher / TwitterアカウントリンクURL要確認 -->
+          そこで登場，<a href="https://github.com/valinet/ExplorerPatcher" target="_blank" rel="noopener noreferrer">Explorer Patcher</a>の登場です．<br>
+          これを適用するとUIがWindows 10風のUIに変身します．<br>
+          Twitter<del>(現X)</del>にて，<a href="https://x.com/" target="_blank" rel="noopener noreferrer">まくろ@n月病(</a>さんに教えてもらいました．(マジ感謝)<br>
+          これを適用し，幸せになった後のデスクトップをお見せします．
+        </p>
 
-    ちなみに構成はガッツリ盛っています．<br>
-    なにせ回路SIMソフト(LTspice)とかEDAソフト(KiCAD)とか3D CADソフト(Autodesk Fusion / Shapr3D)とかを同時起動しがちなので，RAMの量が欲しいわけです．<br>
-    昨今の価格高騰はありますがここだけは外せない．<br>
-    しっかり<b>32 GB</b>積んでいます．<br>
-    あとはPro版Windowsも外せません．<br>
-    そんなこんなで高級構成になってしまい，以下の構成です．<br>
-    <ul>
-      <li>CPU : Intel Core 7 150U<br>10C12T (2P8E) | 1.8/5.4 GHz</li>
-      <li>RAM : LPDDR5X 32 GB</li>
-      <li>ROM : PCIe 4.0 (NVMe) 1 TB</li>
-      <li>OS  : Windows 11 Pro</li>
-    </ul><br>
-    なかなか盛り盛り構成です．<br>
-    たぶんそこらの格安ゲーミングノートPCよりかは高いと思います．<br>
-    ただ，めちゃくちゃ作り込みと言うか，品質と質感が素晴らしいんですよね．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの画像ファイル名・パス要確認 -->
+          <img src="./desktop.jpeg" alt="Desktop on VJF1428" loading="lazy">
+        </figure>
 
-    初期セットアップを済ませたら，色々なソフトをインストールします．<br>
-    代表例は以下のとおりです．<br>
-    <ul>
-      <li>Autodesk Fusion Personal</li>
-      <li>Shapr3D</li>
-      <li>KiCAD</li>
-      <li>Visual Studio Code</li>
-      <li>Affinity</li>
-    </ul><br>
-    他にもありますがこれくらいにしておきます．<br>
-    かれこれ全てのインストールに5時間くらいかかりました．<br><br>
+        <p>いやー美しい．</p>
 
-    ただ…これで終わりではないのです．<br>
-    <b>Windows 11のカスUIを討伐しなければなりません</b>．<br>
-    そこで登場，<a href="https://github.com/valinet/ExplorerPatcher" target="_blank" rel="noopener noreferrer">Explorer Patcher</a>の登場です．<br>
-    これを適用するとUIがWindows 10風のUIに変身します．<br>
-    Twitter<del>(現X)</del>にて，<a href="https://twitter.com/makur0gaku/" target="_blank" rel="noopener noreferrer">まくろ@n月病(</a>さんに教えてもらいました．(マジ感謝)<br>
-    これを適用し，幸せになった後のデスクトップをお見せします．<br>
-    <img src="./resource/desktop.jpeg" width="100%" alt="Desktop on VJF1428"><br>
-    いやー美しい．<br>
-    <hr><br>
-    ということでファーストインプレッションに移ります．<br>
-    とりあえず本体の質感が良いです．<br>
-    天板と背面のプレートは樹脂製ですが，かなり質感が良いです．<br>
-    特に天板，美しいです．<br><br>
+        <hr>
 
-    次にタッチパッドですね．<br>
-    僕はよくタッチパッドを使う(マウスも使います)のですが，この感触も良いですね．<br>
-    まぁASUSの方が好きですがVAIOの手触りも良いです．<br>
-    そしてキーボード．<br>
-    これはどこにも勝てないかな，ってところです．<br>
-    絶妙な深さとクリック感でノートPCの中では1番気に入ってます．<br>
-    以前使っていた<a href="./../svt1112aj/svt1112aj.html">Sony VAIO SVT1112AJ</a>よりも静かなキーボードですが，それでも快適なキーボードです．<br><br>
+        <p>
+          ということでファーストインプレッションに移ります．<br>
+          とりあえず本体の質感が良いです．<br>
+          天板と背面のプレートは樹脂製ですが，かなり質感が良いです．<br>
+          特に天板，美しいです．<br>
+          次にタッチパッドですね．<br>
+          僕はよくタッチパッドを使う(マウスも使います)のですが，この感触も良いですね．<br>
+          まぁASUSの方が好きですがVAIOの手触りも良いです．<br>
+          そしてキーボード．<br>
+          これはどこにも勝てないかな，ってところです．<br>
+          絶妙な深さとクリック感でノートPCの中では1番気に入ってます．<br>
+          以前使っていた<a href="../svt1112aj/svt1112aj.html">Sony VAIO SVT1112AJ</a>よりも静かなキーボードですが，それでも快適なキーボードです．<br>
+          次はIOですかね…<br>
+          IOは割とてんこ盛り仕様です．
+        </p>
+        <ul>
+          <li>USB C (USB PD / USB 3.1 Gen 2×1 / Display Port 1.4)</li>
+          <li>USB C (USB PD / USB 3.1 Gen 2×1 / Display Port 1.4)</li>
+          <li>USB 3.2 Gen 1x1 (Type A)</li>
+          <li>USB 3.2 Gen 1x1 (Type A)</li>
+          <li>HDMI (フルサイズ)</li>
+          <li>RJ45 Eathernet</li>
+          <li>3.5 mm Mini-Jack</li>
+        </ul>
+        <p>
+          SDカードが刺さらないのは痛いですが，まぁ僕の手に届く範囲のLet's noteにも搭載されてないので悪しからず…というか端子構成は同じです．<br>
+          給電・充電はUSB C経由でPD充電になります．<br>
+          最大65 WなのでThe・ビジネスノートって感じです．(持ち運びの際に電源を小型化できるので助かる)<br>
+          最後に驚いたところを書いて終わりにしようと思います．<br>
+          このPCは指紋認証がすごいです．<br>
+          ヒンジを開いた段階では電源は入りませんので(素晴らしい)，電源ボタンを押して起動する訳です．<br>
+          その電源ボタンには指紋認証が内蔵されていて，そこがすごいのです．(語彙力…)<br>
+          Windows Helloで指紋を登録して，VAIOハードウェア設定からある設定を有効にすると，<strong>起動時に電源ボタンに触れるその一瞬で認証が通ります</strong>．<br>
+          とんでもないですよね．<br>
+          おそらくですが，電源ボタンを押した段階ですぐに指紋のデータを取得します．<br>
+          これはBIOSレベルか，もしくはハードウェアレベルで実行されます．<br>
+          その後にWindowsが起動するのでLogonUI.exeが起動したら(ログオン画面が表示されたら)，ログオンプロセスに認証情報を渡します．<br>
+          そうすることでログオンまで済んでしまうのです．<br>
+          つまり登録した指で電源を入れれば10秒でデスクトップまで直行できます．<br>
+          これはすげぇ… と思ったところでまたしばらく使って，感想を書こうと思います．<br>
+          これからは研究も何もかもをこいつでやっていくので，大事に使っていきます．<br>
+          ぜひご検討を．
+        </p>
+      </div>
 
-    次はIOですかね…<br>
-    IOは割とてんこ盛り仕様です．<br>
-    <ul>
-      <li>USB C (USB PD / USB 3.1 Gen 2×1 / Display Port 1.4)</li>
-      <li>USB C (USB PD / USB 3.1 Gen 2×1 / Display Port 1.4)</li>
-      <li>USB 3.2 Gen 1x1 (Type A)</li>
-      <li>USB 3.2 Gen 1x1 (Type A)</li>
-      <li>HDMI (フルサイズ)</li>
-      <li>RJ45 Eathernet</li>
-      <li>3.5 mm Mini-Jack</li>
-    </ul><br>
-    SDカードが刺さらないのは痛いですが，まぁ僕の手に届く範囲のLet's noteにも搭載されてないので悪しからず…というか端子構成は同じです．<br>
-    給電・充電はUSB C経由でPD充電になります．<br>
-    最大65 WなのでThe・ビジネスノートって感じです．(持ち運びの際に電源を小型化できるので助かる)<br><br>
-
-    最後に驚いたところを書いて終わりにしようと思います．<br>
-    このPCは指紋認証がすごいです．<br>
-    ヒンジを開いた段階では電源は入りませんので(素晴らしい)，電源ボタンを押して起動する訳です．<br>
-    その電源ボタンには指紋認証が内蔵されていて，そこがすごいのです．(語彙力…)<br>
-    Windows Helloで指紋を登録して，VAIOハードウェア設定からある設定を有効にすると，<b>起動時に電源ボタンに触れるその一瞬で認証が通ります</b>．<br>
-    とんでもないですよね．<br><br>
-
-    おそらくですが，電源ボタンを押した段階ですぐに指紋のデータを取得します．<br>
-    これはBIOSレベルか，もしくはハードウェアレベルで実行されます．<br>
-    その後にWindowsが起動するのでLogonUI.exeが起動したら(ログオン画面が表示されたら)，ログオンプロセスに認証情報を渡します．<br>
-    そうすることでログオンまで済んでしまうのです．<br>
-    つまり登録した指で電源を入れれば10秒でデスクトップまで直行できます．<br>
-    これはすげぇ… と思ったところでまたしばらく使って，感想を書こうと思います．<br><br>
-
-    これからは研究も何もかもをこいつでやっていくので，大事に使っていきます．<br>
-    ぜひご検討を．
-  </p>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
