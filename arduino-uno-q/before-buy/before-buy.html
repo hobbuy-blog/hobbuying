@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arduino Uno Qが発表されたので，その当時の想いを書き残しています．">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, プログラム, Arduino, Arduino UNO Q, 電気, 電子工作">
+  <!-- Change tags in "keywords" -->
+  <meta name="author" content="Hobbuy-Blog, bockring">
+
+  <title>Arduino Uno Qこれ如何に． | Hobbuy Blog</title>
+  <style>
+    html {
+      scroll-padding-top: 100px;
+    }
+    body {
+      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
+      background: #fafafa;
+      color: #222;
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 1rem;
+      line-height: 1.7;
+      padding-top: 70px;
+    }
+    h1 {
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3em;
+    }
+    a {
+      color: #0055a4;
+    }
+    #cookie-consent-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.65);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    #cookie-consent-modal {
+      background: #fff;
+      color: #222;
+      padding: 2em 2em 1.5em 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      text-align: left;
+      max-width: 90vw;
+      width: 350px;
+    }
+    cookie-consent-modal button {
+      margin-top: 1em;
+      padding: 0.7em 2em;
+      background: #fff;
+      color: #f20;
+      border: none;
+      border-radius: 5px;
+      font-size: 2em;
+      cursor: pointer;
+    }
+    #cookie-consent-modal button:hover {
+      background: #fff;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5em 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .site-title {
+      color: #fff;
+      font-size: 1em;
+      letter-spacing: 0px;
+    }
+    .site-title a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav {
+      margin-left: 2em;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<!-- 
+Link style:
+ Inside of page : <a href="folderpath/filepath"></a>
+ Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
+2nd type is a type that open in new window
+-->
+<body>
+  <header>
+    <div class="site-title"><a href="./../../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
+    <nav>
+      <a href="#top">ページトップ</a>
+    </nav>
+  </header>
+
+  <section id="top"><h2>Arduino UNO Qこれ如何に．<small> - 2025.10.8</small></h2></section>
+  <p>
+    つい先日，Arduino UNO Qというなにやら怪しいものが発表されました．<br>
+    これはArduinoがQualcommに買収されたことに伴う新製品発表で，なかなか斬新なリリースのようにも思います．<br>
+    しかしその真相はどうなのでしょうか．<br>
+    今回は発売前の情報をゆるーくまとめていこうと思います．<br>
+
+    <image src="./../arduino-uno-q.webp" width="360" alt="Arduino UNO Q" border="0px">
+
+    <br>
+    まず，大まかなスペックです．
+    MPU(プロセッサ)にはQualcomm製プロセッサが載ります．<br>
+    ARM Cortex-A53のクアッドコア，周波数は2.0GHzです．<br>
+    A53で2.0GHzというのはあまり見ない数字ですね，1.8GHzまでが多いように感じます．<br>
+    そして標準モデルではRAMとストレージがLPDDR4X 2GBのeMMC 16GB，Debianがプリインストールされているようです．<br>
+    もう1つ高いモデルは4GB/32GBと標準的なシングルボードコンピュータと同等の容量になります．<br>
+    ラズパイの4Bくらいにまで迫りそうなスペック感です．<br><br>
+
+    そしてMCU(マイコン)にはSTMのARM Cortex-M33の160MHzが載ります．<br>
+    R4ではM4の48MHzだったので進化しているようです．<br><br>
+
+    さてここで問題です．<br>
+    今回の製品はArduino Classic系のモデルです．<br>
+    そしてこの系列のボードはペリフェラルが貧弱なことで有名です．<br>
+    というか全てが貧弱だったはずです．<br>
+    どうカバーするのでしょうか．<br>
+    というか画面はどう出力するんだ，と．<br><br>
+
+    なんと，画面はUSB-Cからの出力です．<br>
+    今までに存在した数々のシングルボードコンピュータは基本的にHDMIかDSIコネクタでした．<br>
+    Arduinoは何を間違えたのか，Cで出力できるようにしてしまったようです．<br>
+    しかしCには電源入力も割り振られているうえ，5V3Aの電源を要します．<br>
+    どさくさに紛れてDCジャックも消えてしまいました．<br>
+    USBハブでも使うんでしょうか．<br>
+    マイコンボード(設定上)のただ1つのUSBポートに，OTG変換を挿すことは聞いたことがありますがUSBハブは前代未聞ですね…<br><br>
+
+    ちなみに本体の裏に拡張コネクタがあって，こちらがメインと捉えるのが良さそうですね．<br>
+    完全に今までのArduinoの系譜は絶たれてしまいました．<br>
+    コミュニティも再建が必要かもしれません．<br>
+    これからどうなっていくんでしょうか…<br><br>
+
+    <b>出典</b><br>
+    <a href="https://store-usa.arduino.cc/products/uno-q" target="_blank" rel="noopener noreferrer">Arduino UNO Q販売ページ</a>
+  </p>
+  <a href="./../../index.html">←メインページに戻る</a>
+
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent-overlay">
+    <div id="cookie-consent-modal">
+      <h2>Web閲覧にあたって</h2>
+      <p>
+        このWebサイトはCookieと<br>
+        Google Analyticsを使用しています。<br><br>
+
+        閲覧を続行するには同意してください。<br>
+        この表示は90日後に再び現れます。
+      </p>
+      <button id="accept-cookies">同意する</button>
+    </div>
+  </div>
+
+  <script>
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    function loadGoogleAnalytics() {
+      var id = 'G-G9KZ4SE6QC';
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      document.head.appendChild(gaScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var consent = getCookie('cookie_consent');
+      if(consent === 'accepted') {
+        loadGoogleAnalytics();
+      } else {
+        var overlay = document.getElementById('cookie-consent-overlay');
+        overlay.style.display = 'flex';
+        document.getElementById('accept-cookies').onclick = function() {
+          setCookie('cookie_consent', 'accepted', 90);
+          overlay.style.display = 'none';
+          loadGoogleAnalytics();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
