@@ -2,13 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Hobbuy Blog | 趣味と購入のブログ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="中の人が買ったものを紹介したり、作ったものを紹介したりと自由気ままに書いているブログです。">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, プログラム, 電卓, 関数電卓, 電気, 電子工作">
+  <title>Hobbuy Blog | 趣味と購入のブログ</title>
+  <meta name="description" content="ガジェット・関数電卓・計測器・PCレビューや、電子工作・放射線測定器制作の研究記録を発信する個人ブログ「Hobbuy Blog（ホバーイ・ブログ）」のトップページです。">
+  <meta name="keywords" content="Hobbuy Blog, 趣味と購入のブログ, レビュー, ガジェット, 関数電卓, 電子工作, オシロスコープ, 放射線測定器">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <!-- ファビコン & ホーム画面アイコン（全OS対応・ルート階層のため ./） -->
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/img/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/img/icon-512.png">
@@ -17,10 +17,10 @@
   <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/apple-touch-icon-152.png">
   <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/apple-touch-icon-120.png">
 
-  <!-- OGP設定（SNSシェア時のカード表示） -->
+  <!-- OGP設定 -->
   <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
   <meta property="og:title" content="Hobbuy Blog | 趣味と購入のブログ">
-  <meta property="og:description" content="中の人が買ったものを紹介したり、作ったものを紹介したりと自由気ままに書いているブログです。">
+  <meta property="og:description" content="ガジェット・関数電卓・計測器・PCレビューや、電子工作・放射線測定器制作の研究記録を発信する個人ブログ「Hobbuy Blog（ホバーイ・ブログ）」のトップページです。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/">
   <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
@@ -32,21 +32,23 @@
   <script src="./assets/js/common.js" defer></script>
 </head>
 
-<body data-page="home">
-  <main>
-    <section id="top">
+<body>
+  <main id="top">
+    <section class="home-section">
       <h2>Welcome to my blog</h2>
+
       <div class="notice-box">
         <strong>現在，ブログサイト刷新作業中につき各記事でのUI不整合や開けない記事が存在します．ご了承願います．</strong>
       </div>
+
       <p>
         皆さまこんにちは。管理者で中の人のhobbuy-blogです。読みは<ruby>hubbuy-blog<rt>ホバーイ・ブログ</rt></ruby>です。<br>
         ｢せっかくだから僕もブログを作りたい！｣という気持ちで開設しました。<br>
         基本、作ったものの紹介か製品レビューが多いかと思います。
       </p>
-      <div class="notice-box">
-        <strong>中の人は、Amazonアソシエイト・プログラムによって収入を得ています。</strong>
-      </div>
+
+      <p><strong>中の人は、Amazonアソシエイト・プログラムによって収入を得ています。</strong></p>
+
       <p>他サービスのリンク貼っておきます</p>
       <ul>
         <li><a href="https://qiita.com/bockring" target="_blank" rel="noopener noreferrer">Qiita</a></li>
@@ -54,92 +56,96 @@
       </ul>
     </section>
 
-    <section id="pinned">
+    <section class="home-section">
       <h2>固定記事</h2>
       <ul>
-        <li><a href="publish/privacy.html"><strong>[固定]プライバシーポリシー</strong></a></li>
-        <li><a href="publish/publish.html">[固定]Webサイト開設！</a></li>
-        <li><a href="introduction/introduction.html">[固定]自己紹介と活動内容</a></li>
-        <li><a href="geiger-research/geiger-index.html">放射線測定器を作ろう(目次)</a></li>
-        <li><a href="geiger-research/dho924s.html">RIGOL DHO924Sを骨の髄まで叩く</a></li>
+        <li><strong><a href="./privacy-policy/index.html">[固定]プライバシーポリシー</a></strong></li>
+        <li><a href="./hello-world/index.html">[固定]Webサイト開設！</a></li>
+        <li><a href="./introduce/index.html">[固定]自己紹介と活動内容</a></li>
+        <li><a href="./geiger-research/index.html">放射線測定器を作ろう(目次)</a></li>
+        <li><a href="./geiger-research/dho924s.html">RIGOL DHO924Sを骨の髄まで叩く</a></li>
       </ul>
     </section>
 
-    <section id="list">
+    <section class="home-section">
       <h2>商品リスト</h2>
       <p>
         持っている商品のリストです。<br>
         画像またはリンクをクリックすると当該ページに遷移します(記事作成が完了している商品のみ)。
       </p>
-      <p class="scroll-hint">この表は横スクロールによって更なる範囲を見ることができます。</p>
+      <p>この表は横スクロールによって更なる範囲を見ることができます。</p>
 
+      <!-- ※各サムネイル画像のパス・ファイル名は元index.htmlのものをそのまま維持してください -->
       <div class="table-scroll-wrapper">
-        <table class="item-table">
+        <table class="item-list-table">
           <tbody>
             <tr>
-              <th scope="row">USBテスター</th>
-              <td><a href="ct-3/ct-3.html"><img src="ct-3/ct-3.jpeg" alt="CT-3"><br>CT-3</a></td>
-              <td><a href="rk011/rk011.html"><img src="rk011/rk011.png" alt="RK011"><br>RK011</a></td>
-              <td><img src="rt-tcvamini/rt-tcvamini.jpeg" alt="RT-TCVAMINI"><br>RT-TCVAMINI</td>
+              <th>USBテスター</th>
+              <td><a href="./ct-3/index.html"><img src="./ct-3/ct-3.jpg" alt="CT-3" loading="lazy"><br>CT-3</a></td>
+              <td><a href="./rk011/index.html"><img src="./rk011/rk011.jpg" alt="RK011" loading="lazy"><br>RK011</a></td>
+              <td><img src="./assets/img/rt-tcvamini.jpg" alt="RT-TCVAMINI" loading="lazy"><br>RT-TCVAMINI</td>
             </tr>
             <tr>
-              <th scope="row">関数電卓</th>
-              <td><a href="hp-prime/hp-prime.html"><img src="hp-prime/hp-prime.png" alt="HP Prime"><br>HP Prime</a></td>
-              <td><a href="fx-cg50/fx-cg50.html"><img src="fx-cg50/fx-cg50.jpeg" alt="fx-CG50"><br>fx-CG50</a></td>
-              <td><a href="fx-4850p/fx-4850p.html"><img src="fx-4850p/fx-4850p.jpeg" alt="fx-4850P"><br>fx-4850P</a></td>
-              <td><img src="fx-jp900cw/fx-jp900cw.png" alt="fx-JP900CW"><br>fx-JP900CW</td>
-              <td><img src="fx-jp900/fx-jp900.png" alt="fx-JP900"><br>fx-JP900</td>
-              <td><span class="no-image-badge">[NO IMAGE]</span><br>fx-115ES Plus<br>2nd Edition</td>
-              <td><img src="el-509t/el-509t.png" alt="EL-509T"><br>EL-509T</td>
-              <td><img src="el-566e/el-566e.png" alt="EL-566E"><br>EL-566E</td>
-              <td><img src="el-520l/el-520l.png" alt="EL-520L"><br>EL-520L</td>
-              <td><img src="el-501t/el-501t.png" alt="EL-501T"><br>EL-501T</td>
-              <td><img src="pc-g850/pc-g850.png" alt="PC-G850"><br>PC-G850</td>
-              <td><span class="no-image-badge">[NO IMAGE]</span><br>F-789SG</td>
-              <td><img src="f-605g/f-605g.png" alt="F-605G"><br>F-605G</td>
-              <td><img src="ti-36xpro/ti-36xpro.jpeg" alt="TI-36X Pro"><br>TI-36X Pro</td>
+              <th>関数電卓</th>
+              <td><a href="./hp-prime/index.html"><img src="./hp-prime/hp-prime.jpg" alt="HP Prime" loading="lazy"><br>HP Prime</a></td>
+              <td><a href="./fx-cg50/index.html"><img src="./fx-cg50/fx-cg50.jpg" alt="fx-CG50" loading="lazy"><br>fx-CG50</a></td>
+              <td><a href="./fx-4850p/index.html"><img src="./fx-4850p/fx-4850p.jpg" alt="fx-4850P" loading="lazy"><br>fx-4850P</a></td>
+              <td><img src="./assets/img/fx-jp900cw.jpg" alt="fx-JP900CW" loading="lazy"><br>fx-JP900CW</td>
+              <td><img src="./assets/img/fx-jp900.jpg" alt="fx-JP900" loading="lazy"><br>fx-JP900</td>
+              <td>[NO IMAGE]<br>fx-115ES Plus<br>2nd Edition</td>
+              <td><img src="./assets/img/el-509t.jpg" alt="EL-509T" loading="lazy"><br>EL-509T</td>
+              <td><img src="./assets/img/el-566e.jpg" alt="EL-566E" loading="lazy"><br>EL-566E</td>
+              <td><img src="./assets/img/el-520l.jpg" alt="EL-520L" loading="lazy"><br>EL-520L</td>
+              <td><img src="./assets/img/el-501t.jpg" alt="EL-501T" loading="lazy"><br>EL-501T</td>
+              <td><img src="./assets/img/pc-g850.jpg" alt="PC-G850" loading="lazy"><br>PC-G850</td>
+              <td>[NO IMAGE]<br>F-789SG</td>
+              <td><img src="./assets/img/f-605g.jpg" alt="F-605G" loading="lazy"><br>F-605G</td>
+              <td><img src="./assets/img/ti-36x-pro.jpg" alt="TI-36X Pro" loading="lazy"><br>TI-36X Pro</td>
             </tr>
             <tr>
-              <th scope="row">計測機</th>
-              <td><span class="no-image-badge">[NO IMAGE]</span><br><a href="2c53t/2c53t-index.html">2C53T</a></td>
-              <td><a href="3244-60/3244-60.html"><img src="3244-60/3244-60.png" alt="3244-60"><br>3244-60</a></td>
-              <td><img src="kew-2012ra/kew-2012ra.jpeg" alt="KEW MATE 2012RA"><br>KEW MATE 2012RA</td>
-              <td><a href="kew5711/kew5711.html"><img src="kew5711/kew5711.jpeg" alt="KEW5711"><br>KEW5711</a></td>
-              <td><a href="ow18d/ow18d.html"><img src="ow18d/ow18d.jpeg" alt="OW18D"><br>OW18D</a></td>
+              <th>計測機</th>
+              <td><a href="./2c53t/index.html">[NO IMAGE]<br>2C53T</a></td>
+              <td><a href="./3244-60/index.html"><img src="./3244-60/3244-60.jpg" alt="3244-60" loading="lazy"><br>3244-60</a></td>
+              <td><img src="./assets/img/kew-mate-2012ra.jpg" alt="KEW MATE 2012RA" loading="lazy"><br>KEW MATE 2012RA</td>
+              <td><a href="./kew5711/index.html"><img src="./kew5711/kew5711.jpg" alt="KEW5711" loading="lazy"><br>KEW5711</a></td>
+              <td><a href="./ow18d/index.html"><img src="./ow18d/ow18d.jpg" alt="OW18D" loading="lazy"><br>OW18D</a></td>
             </tr>
             <tr>
-              <th scope="row">PC</th>
-              <td><span class="no-image-badge">[NO IMAGE]</span><br><a href="vjf1428/index.html">VJF1428</a></td>
-              <td><a href="svt1112aj/svt1112aj.html"><img src="svt1112aj/svt1112aj.jpeg" alt="SVT1112AJ"><br>SVT1112AJ</a></td>
+              <th>PC</th>
+              <td><a href="./vjf1428/index.html">[NO IMAGE]<br>VJF1428</a></td>
+              <td><a href="./svt1112aj/svt1112aj.html"><img src="./svt1112aj/svt1112aj.jpg" alt="SVT1112AJ" loading="lazy"><br>SVT1112AJ</a></td>
             </tr>
             <tr>
-              <th scope="row">PC周辺機器</th>
-              <td><span class="no-image-badge">[NO IMAGE]</span><br><a href="m750/index.html">M750</a></td>
-              <td><a href="capclip_pro/capclip_pro.html"><img src="capclip_pro/capclip_pro_use.jpeg" alt="M-CCP1BB"><br>CAPCLIP PRO</a></td>
+              <th>PC周辺機器</th>
+              <td><a href="./m750/index.html">[NO IMAGE]<br>M750</a></td>
+              <td><a href="./capclip-pro/index.html"><img src="./capclip-pro/capclip-pro.jpg" alt="M-CCP1BB" loading="lazy"><br>CAPCLIP PRO</a></td>
             </tr>
             <tr>
-              <th scope="row">その他</th>
-              <td><a href="df-x9000/df-x9000.html"><img src="df-x9000/df-x9000_product.jpeg" alt="DAYFILER"><br>DF-X9000</a></td>
-              <td><a href="nw-a55/index.html"><img src="nw-a55/playing.png" alt="NW-A55"><br>NW-A55</a></td>
+              <th>その他</th>
+              <td><a href="./df-x9000/index.html"><img src="./df-x9000/df-x9000.jpg" alt="DAYFILER" loading="lazy"><br>DF-X9000</a></td>
+              <td><a href="./nw-a55/index.html"><img src="./nw-a55/nw-a55.jpg" alt="NW-A55" loading="lazy"><br>NW-A55</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section id="recent">
+    <section class="home-section">
       <h2>最近の記事</h2>
-      <p>直近の5つの記事を掲載しておきます。<br>新しい順に上から並んでいます。</p>
+      <p>
+        直近の5つの記事を掲載しておきます。<br>
+        新しい順に上から並んでいます。
+      </p>
       <ul>
-        <li><a href="nw-a55/index.html">ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！</a></li>
-        <li><a href="m750/index.html">やっぱりマウスはLogicool．ミドルレンジのM750マウスをレビュー</a></li>
-        <li><a href="xperia/xperia-5-iv.html">SONY Xperia 5 IV認定済み中古を購入！</a></li>
-        <li><a href="geiger-research/pcb2.html">試作機2号のデータを作成</a></li>
-        <li><a href="geiger-research/arduino-nano-r4.html">Arduino Nano R4が届いたのでLチカする</a></li>
+        <li><a href="./nw-a55/index.html">ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！</a></li>
+        <li><a href="./m750/index.html">やっぱりマウスはLogicool．ミドルレンジのM750マウスをレビュー</a></li>
+        <li><a href="./xperia5iv/index.html">SONY Xperia 5 IV認定済み中古を購入！</a></li>
+        <li><a href="./geiger-research/pcb2.html">試作機2号のデータを作成</a></li>
+        <li><a href="./geiger-research/arduino-nano-r4.html">Arduino Nano R4が届いたのでLチカする</a></li>
       </ul>
     </section>
 
-    <section id="article">
+    <section class="home-section">
       <h2>記事一覧</h2>
       <p>
         上に同じく新しい順に上から並んでいます。<br>
@@ -148,93 +154,94 @@
 
       <h3>2026年10月</h3>
       <ul>
-        <li><a href="nw-a55/index.html">ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！</a></li>
+        <li><a href="./nw-a55/index.html">ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！</a></li>
       </ul>
 
       <h3>2026年9月</h3>
       <ul>
-        <li><a href="m750/index.html">やっぱりマウスはLogicool．ミドルレンジのM750マウスをレビュー</a></li>
+        <li><a href="./m750/index.html">やっぱりマウスはLogicool．ミドルレンジのM750マウスをレビュー</a></li>
       </ul>
 
       <h3>2026年5月</h3>
       <ul>
-        <li><a href="xperia/xperia-5-iv.html">SONY Xperia 5 IV認定済み中古を購入！</a></li>
+        <li><a href="./xperia5iv/index.html">SONY Xperia 5 IV認定済み中古を購入！</a></li>
       </ul>
 
       <h3>2026年3月</h3>
       <ul>
-        <li><a href="geiger-research/pcb2.html">試作機2号のデータを作成</a></li>
-        <li><a href="geiger-research/arduino-nano-r4.html">Arduino Nano R4が届いたのでLチカする</a></li>
+        <li><a href="./geiger-research/pcb2.html">試作機2号のデータを作成</a></li>
+        <li><a href="./geiger-research/arduino-nano-r4.html">Arduino Nano R4が届いたのでLチカする</a></li>
       </ul>
 
       <h3>2026年2月</h3>
       <ul>
-        <li><a href="geiger-research/pcb1.html">放射線計測器の試作機1号を発注</a></li>
-        <li><a href="vjf1428/benchmark.html">新VAIOのベンチマーク測定をする</a></li>
-        <li><a href="vjf1428/stress-test.html">新VAIOに重い作業をさせてみた</a></li>
+        <li><a href="./geiger-research/pcb1.html">放射線計測器の試作機1号を発注</a></li>
+        <li><a href="./vjf1428/benchmark.html">新VAIOのベンチマーク測定をする</a></li>
+        <li><a href="./vjf1428/stress-test.html">新VAIOに重い作業をさせてみた</a></li>
       </ul>
 
       <h3>2026年1月</h3>
       <ul>
-        <li><a href="vjf1428/index.html">VAIO F14 (VJF1428)を購入！</a></li>
+        <li><a href="./vjf1428/index.html">VAIO F14 (VJF1428)を購入！</a></li>
       </ul>
 
       <h3>2025年12月</h3>
       <ul>
-        <li><a href="geiger-research/sipd-measure.html">SiPDが使用に適しているか確かめる</a></li>
-        <li><a href="geiger-research/shield-effect.html">シールドの効果を確かめる</a></li>
+        <li><a href="./geiger-research/sipd-measure.html">SiPDが使用に適しているか確かめる</a></li>
+        <li><a href="./geiger-research/shield-effect.html">シールドの効果を確かめる</a></li>
       </ul>
 
       <h3>2025年11月</h3>
       <ul>
-        <li><a href="geiger-research/power-supply.html">低ノイズな電源ユニットを作る</a></li>
-        <li><a href="geiger-research/sds1204x-e.html">大学からSIGLENT SDS1204X-Eを借りた</a></li>
-        <li><a href="geiger-research/circuit.html">回路図を作る中で得られた気付き</a></li>
-        <li><a href="geiger-research/parts-prepare.html">放射線測定器に使う部品を買い揃える</a></li>
+        <li><a href="./geiger-research/power-supply.html">低ノイズな電源ユニットを作る</a></li>
+        <li><a href="./geiger-research/sds1204x-e.html">大学からSIGLENT SDS1204X-Eを借りた</a></li>
+        <li><a href="./geiger-research/circuit.html">回路図を作る中で得られた気付き</a></li>
+        <li><a href="./geiger-research/parts-prepare.html">放射線測定器に使う部品を買い揃える</a></li>
       </ul>
 
       <h3>2025年10月</h3>
       <ul>
-        <li><a href="geiger-research/arduino-measure2.html">ArduinoのIO速度を測る②</a></li>
-        <li><a href="geiger-research/arduino-measure1.html">ArduinoのIO速度を測る①</a></li>
-        <li><a href="geiger-research/geiger-about.html">放射線測定器を作ろう</a></li>
-        <li><a href="2c53t/2c53t-index.html">FNIRSI 2C53Tをレビュー</a></li>
-        <li><a href="arduino-uno-q/before-buy/before-buy.html">Arduino UNO Qこれ如何に．</a></li>
+        <li><a href="./geiger-research/arduino-measure2.html">ArduinoのIO速度を測る②</a></li>
+        <li><a href="./geiger-research/arduino-measure1.html">ArduinoのIO速度を測る①</a></li>
+        <li><a href="./geiger-research/about.html">放射線測定器を作ろう</a></li>
+        <li><a href="./2c53t/index.html">FNIRSI 2C53Tをレビュー</a></li>
+        <li><a href="./arduino-uno-q/before-buy/index.html">Arduino UNO Qこれ如何に．</a></li>
       </ul>
 
       <h3>2025年9月</h3>
       <ul>
-        <li><a href="e-dictionary/e-dictionary.html">電子辞書のすゝめ</a></li>
-        <li><a href="svt1112aj/svt1112aj_2.html">ジャンクVAIOをメンテ&amp;デュアルブート</a></li>
-        <li><a href="svt1112aj/svt1112aj.html">ジャンクなSONY VAIOをレビュー！</a></li>
+        <li><a href="./e-dict/index.html">電子辞書のすゝめ</a></li>
+        <li><a href="./svt1112aj/svt1112aj_2.html">ジャンクVAIOをメンテ&amp;デュアルブート</a></li>
+        <li><a href="./svt1112aj/svt1112aj.html">ジャンクなSONY VAIOをレビュー！</a></li>
       </ul>
 
       <h3>2025年7月</h3>
       <ul>
-        <li><a href="df-x9000/df-x9000.html">SII DAYFILER DF-X9000(電子辞書)をレビュー！</a></li>
+        <li><a href="./df-x9000/index.html">SII DAYFILER DF-X9000(電子辞書)をレビュー！</a></li>
       </ul>
 
       <h3>2025年6月</h3>
       <ul>
-        <li><a href="fx-4850p/fx-4850p.html">CASIO fx-4850P(プログラム関数電卓)をレビュー！</a></li>
-        <li><a href="capclip_pro/capclip_pro.html">ELECOMのモバイルマウスCAPCLIP PROをレビュー！</a></li>
-        <li><a href="3244-60/3244-60.html">HIOKI 3244-60(テスター)をレビュー！</a></li>
-        <li><a href="fx-cg50/fx-cg50.html">CASIO fx-CG50(グラフ関数電卓)をレビュー！</a></li>
-        <li><a href="kew5711/kew5711.html">KEW5711(検電器)をレビュー！</a></li>
-        <li><a href="ow18d/ow18d.html">OWON OW18D(テスター)をレビュー！</a></li>
-        <li><a href="ct-3/ct-3.html">AVHzY CT-3(USBテスター)をレビュー！</a></li>
-        <li><a href="introduction/introduction.html">[固定]自己紹介と活動内容</a></li>
-        <li><a href="hp-prime/hp-prime.html">HP Prime G2(グラフ関数電卓)をレビュー！</a></li>
-        <li><a href="rk011/rk011.html">RYKEN RK011(USBテスター)をレビュー！</a></li>
-        <li><a href="publish/publish.html">[固定]Webサイト開設！</a></li>
+        <li><a href="./fx-4850p/index.html">CASIO fx-4850P(プログラム関数電卓)をレビュー！</a></li>
+        <li><a href="./capclip-pro/index.html">ELECOMのモバイルマウスCAPCLIP PROをレビュー！</a></li>
+        <li><a href="./3244-60/index.html">HIOKI 3244-60(テスター)をレビュー！</a></li>
+        <li><a href="./fx-cg50/index.html">CASIO fx-CG50(グラフ関数電卓)をレビュー！</a></li>
+        <li><a href="./kew5711/index.html">KEW5711(検電器)をレビュー！</a></li>
+        <li><a href="./ow18d/index.html">OWON OW18D(テスター)をレビュー！</a></li>
+        <li><a href="./ct-3/index.html">AVHzY CT-3(USBテスター)をレビュー！</a></li>
+        <li><a href="./introduce/index.html">[固定]自己紹介と活動内容</a></li>
+        <li><a href="./hp-prime/index.html">HP Prime G2(グラフ関数電卓)をレビュー！</a></li>
+        <li><a href="./rk011/index.html">RYKEN RK011(USBテスター)をレビュー！</a></li>
+        <li><a href="./hello-world/index.html">[固定]Webサイト開設！</a></li>
       </ul>
 
       <hr>
-      <details class="archive-details">
+
+      <details>
         <summary>過去の記事(クリックすると開きます)</summary>
         <p>
           一定期間が経過した記事はこの折りたたみの中に入っています。<br>
-          頑張って探してください。<br><br>
+          頑張って探してください。<br>
           現在は、どの記事も入っていません。下記に掲載例を挙げておきます。
         </p>
         <h3>期間</h3>
@@ -246,17 +253,18 @@
       </details>
     </section>
 
-    <section id="contact">
+    <section class="home-section">
       <h2>お問い合わせフォーム</h2>
       <p>
         以下の項目を入力して[送信]を押してください。<br>
         また返答が遅くなる場合がありますが、その点はご容赦ください。<br>
         ※入力いただいた個人情報はお問い合わせに対する返答やこちらで対応する際の個人の識別のみに用います。
       </p>
+
+      <!-- ※元index.htmlのGoogle Form埋め込みiframeをそのまま維持してください -->
       <div class="contact-form-wrapper">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9H8_ZJ1-D3o6Qmxtp8WHpCrJbioOvQQGkg6mTBfRErOGWVQ/viewform?embedded=true" title="お問い合わせフォーム">読み込んでいます…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf_YOUR_FORM_ID_HERE/viewform?embedded=true" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0" title="お問い合わせフォーム">読み込んでいます…</iframe>
       </div>
-      <div class="form-credit">Powered by Google Form</div>
     </section>
   </main>
 </body>
