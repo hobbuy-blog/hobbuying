@@ -3,259 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FNIRSIから販売されている2C53Tという多機能計測器のレビュー．この記事ではオシロスコープ機能について紹介しています．">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, オシロスコープ, FNIRSI, 2C53T, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>FNIRSI 2C53Tレビュー(オシロ) | Hobbuy Blog</title>
+  <meta name="description" content="FNIRSI 2C53Tの2chオシロスコープ機能について、Cursor測定・Measure測定・残光表示（擬似DPO）の使い勝手やトリガの弱さ、ファームウェア更新前後のUI比較と8bit量子化誤差をレビューします。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, 計測器, オシロスコープ, FNIRSI, 2C53T, 量子化誤差">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>FNIRSI 2C53Tレビュー(オシロ) | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="FNIRSI 2C53Tレビュー(オシロ) | Hobbuy Blog">
+  <meta property="og:description" content="FNIRSI 2C53Tの2chオシロスコープ機能について、Cursor測定・Measure測定・残光表示（擬似DPO）の使い勝手やトリガの弱さ、ファームウェア更新前後のUI比較と8bit量子化誤差をレビューします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/2c53t/2c53t-oscillo.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">FNIRSI 2C53Tをレビュー<span class="post-date"> - 2025.10.27</span></h1>
+      </header>
 
-  <section id="top"><h2>FNIRSI 2C53Tをレビュー<small> - 2025.10.27</small></h2></section>
-  <hr>
-    <h3>目次</h3>
-    <ol>
-      <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
-      <li><b>オシロスコープ機能</b></li>
-      <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
-      <li><a href="./2c53t-fg.html">ファンクションジェネレータ機能</a></li>
-    </ol>
-  <hr>
-  <h3>2.オシロスコープ機能</h3>
-  <p>
-    オシロスコープ機能，これは2C53Tの最も重要な機能です．<br>
-    オシロスコープは2chの入力があり，そこそこ多機能だと思います．<br><br>
+      <nav class="post-toc" aria-label="シリーズ目次">
+        <p class="toc-title">目次</p>
+        <ol>
+          <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
+          <li><strong>オシロスコープ機能</strong></li>
+          <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
+          <li><a href="./2c53t-fg.html">ファンクションジェネレータ機能</a></li>
+        </ol>
+      </nav>
 
-    購入リンク→<a href="https://amzn.to/3WqtKJ7" target="_blank" rel="noopener noreferrer">https://amzn.to/3WqtKJ7</a><br><br>
+      <div class="post-body">
+        <h2>2.オシロスコープ機能</h2>
+        <p>
+          オシロスコープ機能，これは2C53Tの最も重要な機能です．<br>
+          オシロスコープは2chの入力があり，そこそこ多機能だと思います．<br>
+          購入リンク→<a href="https://amzn.to/3WqtKJ7" target="_blank" rel="noopener noreferrer">https://amzn.to/3WqtKJ7</a><br>
+          まず，このオシロスコープのほぼ全てを詰め込んだ画像がこちらです．
+        </p>
 
-    まず，このオシロスコープのほぼ全てを詰め込んだ画像がこちらです．<br>
-    <img src="./2c53t-demo.png" width="360px" alt="2C53Tのほぼ全ての機能を詰め込んだ画像"><br>
-    この画像では，2chの入力とMeasure測定，Cursor測定と残光表示を使用しています．<br>
-    波形演算とFFTは使用していませんが，もう<b>The・オシロスコープ</b>という感じでの画像です．<br>
-    ここまでしっかりと計測できるハンドヘルドオシロは多くないです．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの画像ファイル名・パス要確認 -->
+          <img src="./oscillo_full.png" alt="2C53Tのほぼ全ての機能を詰め込んだ画像" loading="lazy">
+        </figure>
 
-    残光表示の機能は俗に言うDPO，デジタル蛍光体オシロスコープというものだと思います．<br>
-    ただしDPOは天下のTektronixの商標であるため，この表示になったのでしょう．<br>
-    というかDPOのようなものを名乗るにはちょっと機能が足りません．<br>
-    あくまで「ブラウン管オシロを模擬する」ものなので，波形の通る回数が多いところは色を濃くする必要がありますがそんな機能は無いに等しいです．<br>
-    それでも偶然的に発生する異常波形を表示として残せるのは便利です．<br><br>
+        <p>
+          この画像では，2chの入力とMeasure測定，Cursor測定と残光表示を使用しています．<br>
+          波形演算とFFTは使用していませんが，もう<strong>The・オシロスコープ</strong>という感じでの画像です．<br>
+          ここまでしっかりと計測できるハンドヘルドオシロは多くないです．<br>
+          残光表示の機能は俗に言うDPO，デジタル蛍光体オシロスコープというものだと思います．<br>
+          ただしDPOは天下のTektronixの商標であるため，この表示になったのでしょう．<br>
+          というかDPOのようなものを名乗るにはちょっと機能が足りません．<br>
+          あくまで「ブラウン管オシロを模擬する」ものなので，波形の通る回数が多いところは色を濃くする必要がありますがそんな機能は無いに等しいです．<br>
+          それでも偶然的に発生する異常波形を表示として残せるのは便利です．<br>
+          Cursor測定は画面上の紫の線の垂直方向，水平方向でそれぞれの間の差分で測定ができます．<br>
+          何気にこの機能は積んでいるメーカーが少ないので助かります．<br>
+          ベンチトップのデジタルオシロは大体積んでるんですけどねぇ…<br>
+          ものすごく便利で重宝する機能です．<br>
+          Measure測定は画面の下の方に表示されている波形パラメータを表示する機能です．<br>
+          Vppや周波数，Duty比も分かる優れものです．<br>
+          ですが最近のデジタルオシロなら，キットのショボいやつでも搭載されている機能だと思います．<br>
+          …とここまでは順調に高評価なわけですが問題があります．<br>
+          <strong>トリガのかかり方が弱い</strong>ことです．<br>
+          トリガが最もかかりやすい低周波の正弦波や矩形波でも，時間軸方向を拡大しすぎると全然トリガが掛からないので，地味に面倒です．<br>
+          しかもファームのアップデート前は波形取り込み後に時間軸方向の拡大をすることができなかったので細かいリンギングを見ることすらできませんでした．<br>
+          ただアップデート後は後から拡大できるようになったので，評価が×から△に変わりました．<br>
+          あとバグもあります．残光表示がONの時，トリガを一気に動かすとシステムがバグを起こしたのかシャットダウンします．<br>
+          FNIRSIさん直してね⭐︎<br>
+          ちなみに，アップデート前後のUIの変化も見せておきます．
+        </p>
 
-    Cursor測定は画面上の紫の線の垂直方向，水平方向でそれぞれの間の差分で測定ができます．<br>
-    何気にこの機能は積んでいるメーカーが少ないので助かります．<br>
-    ベンチトップのデジタルオシロは大体積んでるんですけどねぇ…<br>
-    ものすごく便利で重宝する機能です．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの2枚目・3枚目画像ファイル名・パス要確認 -->
+          <img src="./ui_before.png" alt="アップデート前のUI" loading="lazy">
+          <figcaption>↑アップデート前．文字が小さく，細い．</figcaption>
+        </figure>
 
-    Measure測定は画面の下の方に表示されている波形パラメータを表示する機能です．<br>
-    Vppや周波数，Duty比も分かる優れものです．<br>
-    ですが最近のデジタルオシロなら，キットのショボいやつでも搭載されている機能だと思います．<br><br>
+        <figure class="post-figure">
+          <img src="./ui_after.png" alt="アップデート後のUI" loading="lazy">
+          <figcaption>↑アップデート後．文字が少し大きく，太い見やすいものに変更された．</figcaption>
+        </figure>
 
-    …とここまでは順調に高評価なわけですが問題があります．<br>
-    <b>トリガのかかり方が弱い</b>ことです．<br>
-    トリガが最もかかりやすい低周波の正弦波や矩形波でも，時間軸方向を拡大しすぎると全然トリガが掛からないので，地味に面倒です．<br>
-    しかもファームのアップデート前は波形取り込み後に時間軸方向の拡大をすることができなかったので細かいリンギングを見ることすらできませんでした．<br>
-    ただアップデート後は後から拡大できるようになったので，評価が×から△に変わりました．<br><br>
+        <p>
+          文字の見やすさは圧倒的です．<br>
+          非常に見やすくなったので，今後のアップデートにも期待です．<br>
+          また，このオシロは手持ち型というだけで<strong>普通の8 bitオシロスコープ</strong>なので，デスクトップの8 bit機と同じように<strong>量子化誤差があります</strong>．<br>
+          (アップデート後のオシロスコープ機能で可能になった)波形取り込みの後に垂直軸を拡大してやります．<br>
+          すると，階段状に波形が表示されます．
+        </p>
 
-    あとバグもあります．残光表示がONの時，トリガを一気に動かすとシステムがバグを起こしたのかシャットダウンします．<br>
-    FNIRSIさん直してね⭐︎<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの4枚目画像ファイル名・パス要確認 -->
+          <img src="./quantization.png" alt="量子化誤差によって階段状になった取り込み波形" loading="lazy">
+        </figure>
 
-    ちなみに，アップデート前後のUIの変化も見せておきます．<br>
-    <img src="./2c53t-dueOld.png" width="360px" alt="アップデート前のUI"><br>
-    ↑アップデート前．文字が小さく，細い．<br><br>
+        <p>他の機能については各記事をご覧ください．</p>
+      </div>
 
-    <img src="./2c53t-dueNew.png" width="360px" alt="アップデート後のUI"><br>
-    ↑アップデート後．文字が少し大きく，太い見やすいものに変更された．<br><br>
+      <nav class="post-toc" aria-label="シリーズ目次">
+        <p class="toc-title">目次</p>
+        <ol>
+          <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
+          <li><strong>オシロスコープ機能</strong></li>
+          <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
+          <li><a href="./2c53t-fg.html">ファンクションジェネレータ機能</a></li>
+        </ol>
+      </nav>
 
-    文字の見やすさは圧倒的です．<br>
-    非常に見やすくなったので，今後のアップデートにも期待です．<br><br>
-
-    また，このオシロは手持ち型というだけで<b>普通の8 bitオシロスコープ</b>なので，デスクトップの8 bit機と同じように<b>量子化誤差があります</b>．<br>
-    (アップデート後のオシロスコープ機能で可能になった)波形取り込みの後に垂直軸を拡大してやります．<br>
-    すると，階段状に波形が表示されます．<br>
-    <img src="./2c53t-error.png" width="360px" alt="量子化誤差によって階段状になった取り込み波形"><br><br>
-
-    他の機能については各記事をご覧ください．
-  </p>
-  <hr>
-    <h3>目次</h3>
-    <ol>
-      <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
-      <li><b>オシロスコープ機能</b></li>
-      <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
-      <li><a href="./2c53t-fg.html">ファンクションジェネレータ機能</a></li>
-    </ol>
-  <hr>
-  <a href="./2c53t-index.html">←目次に戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次に戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
