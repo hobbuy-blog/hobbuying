@@ -3,203 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Siフォトダイオードを用いて放射線計測器を作る研究もいよいよ山場に差し掛かりつつあり，ついに試作機1号を発注しました．">
-  <meta name="keywords" content="研究, ブログ, 放射線測定器, 評価, プログラム, Arduino, 設計, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>試作機1号を発注 | Hobbuy Blog</title>
+  <meta name="description" content="放射線計測器の試作機1号のプリント基板をJLCPCBへ、電子部品をAmazon Business・秋月電子通商・マルツオンラインへ発注しました。">
+  <meta name="keywords" content="研究, 電子工作, 放射線測定器, プリント基板, JLCPCB, 試作機">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>試作機1号を発注 | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="試作機1号を発注 | Hobbuy Blog">
+  <meta property="og:description" content="放射線計測器の試作機1号のプリント基板をJLCPCBへ、電子部品をAmazon Business・秋月電子通商・マルツオンラインへ発注しました。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/geiger-research/pcb1.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">10.放射線計測器の試作機1号を発注<span class="post-date"> - 2026.2.16</span></h1>
+      </header>
 
-  <section id="top"><h2>10.放射線計測器の試作機1号を発注<small> - 2026.2.16</small></h2></section>
-  <p>
-    放射線計測器を作る研究に関連する記事もしばらく空いてしまいました．<br>
-    ただ裏ではしっかり進んでいます．<br>
-    ついに試作機の1号機を発注しました．<br><br>
+      <div class="post-body">
+        <p>
+          放射線計測器を作る研究に関連する記事もしばらく空いてしまいました．<br>
+          ただ裏ではしっかり進んでいます．<br>
+          ついに試作機の1号機を発注しました．<br>
+          基板をJLC@PCBで発注し，使用する部材・部品はAmazon Business，秋月電子通商，マルツオンラインで発注しました．<br>
+          この記事の投稿日の前日に大阪大学の小林信之准教授のもとへ行ってきたのでそこで発注してきました．<br>
+          作業量はめちゃくちゃ大量でしたが，なんとか発注までできました．<br>
+          テスト期間を挟んでの続報をお待ちください．
+        </p>
+      </div>
 
-    基板をJLC@PCBで発注し，使用する部材・部品はAmazon Business，秋月電子通商，マルツオンラインで発注しました．<br>
-    この記事の投稿日の前日に大阪大学の小林信之准教授のもとへ行ってきたのでそこで発注してきました．<br>
-    作業量はめちゃくちゃ大量でしたが，なんとか発注までできました．<br>
-    テスト期間を挟んでの続報をお待ちください．
-    </p>
+      <nav class="post-nav" aria-label="前後記事ナビゲーション">
+        <a href="./sipd-measure.html">← 前回:SiPDが使用に適しているか確かめる</a>
+        <a href="./arduino-nano-r4.html">次回:Arduino Nano R4が届いたのでLチカする →</a>
+      </nav>
 
-  <div>
-    <div align="left"><a href="./sipd-measure.html">← 前回:SiPDが使用に適しているか確かめる</a></div>
-    <div align="right"><a href="./arduino-nano-r4.html">次回:Arduino Nano R4が届いたのでLチカする →</a></div>
-  </div>
-  <br>
-  <a href="./geiger-index.html">←目次へ戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次へ戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
