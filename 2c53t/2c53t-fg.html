@@ -3,225 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FNIRSIから販売されている2C53Tという多機能計測器のレビュー．この記事ではファンクションジェネレータ機能について紹介しています．">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, FNIRSI, 2C53T, ファンクションジェネレータ, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>FNIRSI 2C53Tレビュー(ファンジェネ) | Hobbuy Blog</title>
+  <meta name="description" content="FNIRSI 2C53Tのファンクションジェネレータ機能について、13種類の出力波形や矩形波の有用性、擬似波形出力の精度に関する正直な使用感をレビューします。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, 計測器, ファンクションジェネレータ, 信号発生器, FNIRSI, 2C53T">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>FNIRSI 2C53Tレビュー(ファンジェネ) | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="FNIRSI 2C53Tレビュー(ファンジェネ) | Hobbuy Blog">
+  <meta property="og:description" content="FNIRSI 2C53Tのファンクションジェネレータ機能について、13種類の出力波形や矩形波の有用性、擬似波形出力の精度に関する正直な使用感をレビューします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/2c53t/2c53t-fg.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">FNIRSI 2C53Tをレビュー<span class="post-date"> - 2025.10.27</span></h1>
+      </header>
 
-  <section id="top"><h2>FNIRSI 2C53Tをレビュー<small> - 2025.10.27</small></h2></section>
-  <hr>
-    <h3>目次</h3>
-    <ol>
-      <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
-      <li><a href="./2c53t-oscillo.html">オシロスコープ機能</a></li>
-      <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
-      <li><b>ファンクションジェネレータ機能</b></li>
-    </ol>
-  <hr>
-  <h3>4.ファンクションジェネレータ機能</h3>
-  <p>
-    最後にファンクションジェネレータ機能も紹介します．<br><br>
+      <nav class="post-toc" aria-label="シリーズ目次">
+        <p class="toc-title">目次</p>
+        <ol>
+          <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
+          <li><a href="./2c53t-oscillo.html">オシロスコープ機能</a></li>
+          <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
+          <li><strong>ファンクションジェネレータ機能</strong></li>
+        </ol>
+      </nav>
 
-    購入リンク→<a href="https://amzn.to/3WqtKJ7" target="_blank" rel="noopener noreferrer">https://amzn.to/3WqtKJ7</a><br><br>
+      <div class="post-body">
+        <h2>4.ファンクションジェネレータ機能</h2>
+        <p>
+          最後にファンクションジェネレータ機能も紹介します．<br>
+          購入リンク→<a href="https://amzn.to/3WqtKJ7" target="_blank" rel="noopener noreferrer">https://amzn.to/3WqtKJ7</a><br>
+          <strong>正直言って微妙</strong>です．<br>
+          全て擬似波形が出力されるので，入力対象に対して滑らかな波形を入力できません．<br>
+          私がするような低レベルの電子工作ならギリギリ使えないことはないと思いますが，普通にArduino Uno R4のDACで出力した方がもう少し綺麗な波を出力できると思います．<br>
+          ただ，波形を13種類から選べる点は良いです．<br>
+          正直，ファンジェネ機能に言うことが少ないのですが，この機能は全然オススメできません．<br>
+          使わない方がいいかもしれないレベルです．<br>
+          あ，矩形波の出力は全然問題ないのでお忘れなく．<br>
+          これだけは有能です．<br>
+          あとは階段波かなぁ．<br>
+          他の機能については各記事をご覧ください．
+        </p>
+      </div>
 
-    <b>正直言って微妙</b>です．<br>
-    全て擬似波形が出力されるので，入力対象に対して滑らかな波形を入力できません．<br>
-    私がするような低レベルの電子工作ならギリギリ使えないことはないと思いますが，普通にArduino Uno R4のDACで出力した方がもう少し綺麗な波を出力できると思います．<br>
-    ただ，波形を13種類から選べる点は良いです．<br><br>
+      <nav class="post-toc" aria-label="シリーズ目次">
+        <p class="toc-title">目次</p>
+        <ol>
+          <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
+          <li><a href="./2c53t-oscillo.html">オシロスコープ機能</a></li>
+          <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
+          <li><strong>ファンクションジェネレータ機能</strong></li>
+        </ol>
+      </nav>
 
-    正直，ファンジェネ機能に言うことが少ないのですが，この機能は全然オススメできません．<br>
-    使わない方がいいかもしれないレベルです．<br><br>
-
-    あ，矩形波の出力は全然問題ないのでお忘れなく．<br>
-    これだけは有能です．<br>
-    あとは階段波かなぁ．<br><br>
-
-    他の機能については各記事をご覧ください．
-  </p>
-  <hr>
-    <h3>目次</h3>
-    <ol>
-      <li><a href="./2c53t-about.html">購入前の記録・商品の概要・商品到着</a></li>
-      <li><a href="./2c53t-oscillo.html">オシロスコープ機能</a></li>
-      <li><a href="./2c53t-dmm.html">デジタルマルチメータ機能</a></li>
-      <li><b>ファンクションジェネレータ機能</b></li>
-    </ol>
-  <hr>
-  <a href="./2c53t-index.html">←目次に戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次に戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
