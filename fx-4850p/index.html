@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASIO fx-4850Pレビュー | Hobbuy Blog</title>
+  <meta name="description" content="1997年発売のプログラム関数電卓「CASIO fx-4850P」のキーの押し心地や独自のプログラム言語仕様（モンテカルロ法による円周率計算コード例付き）をレビューします。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, 関数電卓, プログラム関数電卓, CASIO, fx-4850P">
+  <meta name="author" content="Hobbuy-Blog, bockring">
+
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
+
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="CASIO fx-4850Pレビュー | Hobbuy Blog">
+  <meta property="og:description" content="1997年発売のプログラム関数電卓「CASIO fx-4850P」のキーの押し心地や独自のプログラム言語仕様（モンテカルロ法による円周率計算コード例付き）をレビューします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/fx-4850p/">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/fx-4850p/fx-4850p.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
+</head>
+
+<body>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">CASIO fx-4850P(プログラム関数電卓)をレビュー！<span class="post-date"> - 2025.6.25</span></h1>
+      </header>
+
+      <div class="post-body">
+        <p>
+          今回はCASIOの古い関数電卓、fx-4850Pです。<br>
+          1996年発売のfx-4800Pのマイナーチェンジ版で、ほぼほぼ同じです。<br>
+          1997年発売の機種で、プログラムが組める、しかも当時としては計算も速めの関数電卓です。<br>
+          この計算機、やはりプログラム機能がミソです。<br>
+          まぁ、実際<strong>言語仕様は微妙</strong>すぎますし、<strong>使いにくい</strong>言語ではあると思うのですが。
+        </p>
+
+        <figure class="post-figure">
+          <img src="./fx-4850p.jpeg" alt="A picture of fx-4850P" loading="lazy">
+        </figure>
+
+        <p>
+          ちなみに、<strong>キーの押し心地はあまり良くない</strong>です。<br>
+          あまりにクリック感が足らず、押せているか不安になります。<br>
+          電卓である以上、ある程度の押し心地、クリック感は良いものであるべきです。<br>
+          先ほど言いましたが、<strong>言語は割と最悪</strong>なので、以下に例をあげようと思います。
+        </p>
+
+        <hr>
+        <pre><code>"MONTE CARLO"↵
+" CALCULATE π"↵
+{N}:P=N↵
+Cls↵
+"CALCULATING..."↵
+A=1↵
+D=0↵
+E=1↵
+Lbl 1↵
+B=2*Ran#-1↵
+C=2*Ran#-1↵
+(B^2+C^2)≦1⇒D=D+1◺↵
+Dsz N:N&gt;0⇒Goto 1◺↵
+Cls↵
+"DONE."↵
+"π="↵
+4*D/P</code></pre>
+        <hr>
+
+        <p>
+          このコードを見て何をしたいか分かりますか？<br>
+          コードの1番最初を見た方は何となく察せたかもしれません。<br>
+          <strong>πを求めるプログラム</strong>です。<br>
+          一応、BASIC焼き直し版を掲載します。<br>
+          BASICなので、雰囲気で解読できるかもしれません。<br>
+          最小限の動作に必要な部分のみですが、まぁ見比べてみてください。
+        </p>
+
+        <hr>
+        <pre><code>INPUT N:P=N
+Cls
+A=1:D=0:E=1
+LABEL 1
+B=-1+ RND 2
+C=-1+ RND 2
+IF (SQU B)+(SQU C)&lt;=1
+THEN D=D+1
+N=N-1:IF N&gt;0 THEN GOTO 1
+4*D/P</code></pre>
+        <hr>
+
+        <p>
+          こっちの方が、見やすくないですか？<br>
+          比較対象がおかしいような気はしますが、ポケコンPC-G850より遅いです。<br>
+          実際、PC-G850はZ-80をCPUとしているので、その差はあると思いますが。<br>
+          まぁ、色々ボロクソ言って来ましたが、<strong>多機能であることに変わりはない</strong>です。<br>
+          だからと言って、これを買う意味はないと思いますが。<br>
+          <!-- ※旧ファイルのfx-5800PリンクURLに差し替えてください -->
+          黙って<a href="https://www.amazon.co.jp/" target="_blank" rel="noopener noreferrer">fx-5800P</a>を買いましょう。
+        </p>
+      </div>
+
+      <div class="post-back">
+        <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
