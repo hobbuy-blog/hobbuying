@@ -3,213 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="放射線測定器の回路図を書くなかで得た気付きを残しています．">
-  <meta name="keywords" content="研究, ブログ, 放射線測定器, 評価, プログラム, Arduino, 設計, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>回路図を書く | Hobbuy Blog</title>
+  <meta name="description" content="大阪大学・核物理研究センターの小林信之准教授のご指導のもとで進める放射線測定器の回路設計において、SiPDへの逆バイアス印加やシェーピングアンプの役割について整理しました。">
+  <meta name="keywords" content="研究, 電子工作, 放射線測定器, SiPD, 逆バイアス, シェーピングアンプ, 回路設計">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>回路図を書く | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="回路図を書く | Hobbuy Blog">
+  <meta property="og:description" content="大阪大学・核物理研究センターの小林信之准教授のご指導のもとで進める放射線測定器の回路設計において、SiPDへの逆バイアス印加やシェーピングアンプの役割について整理しました。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/geiger-research/circuit.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">5.回路図を作る中で得られた気付き<span class="post-date"> - 2025.11.4</span></h1>
+      </header>
 
-  <section id="top"><h2>5.回路図を作る中で得られた気付き<small> - 2025.11.4</small></h2></section>
-  <p>
-    放射線測定器を作る研究に関する記事もかれこれ連載5本目です．<br>
-    裏ではひっそりと回路図も書き進めていたのですが，現時点である程度完成したので得られた気付きを記しておこうと思います．<br><br>
+      <div class="post-body">
+        <p>
+          放射線測定器を作る研究に関する記事もかれこれ連載5本目です．<br>
+          裏ではひっそりと回路図も書き進めていたのですが，現時点である程度完成したので得られた気付きを記しておこうと思います．<br>
+          まず，SiPDは逆バイアスをかけて使うことでした．<br>
+          僕自身，SiPDを使う回路の設計が初めてで，今回初めて知りました．<br>
+          実は小林信之准教授(大阪大学・核物理研究センター)と共に研究を進めさせていただいています．<br>
+          その小林先生に回路案を送って修正点などを教えていただいていたのですが，そこで初めて知りました．<br>
+          そしてシェーピングアンプが必要ということも教えていただきました．<br>
+          シェーピングアンプというのは信号を矩形波状にすることで継続時間を伸ばすものだそうです．<br>
+          ArduinoのIO速度を測った結果を書き残した第1回と第2回の記事で分かったようにどれだけ高性能なArduinoでもサンプリングレートは落ちてしまうのです．<br>
+          それを解決するためにシェーピングアンプで信号の継続時間を伸ばして検出しやすくするのです．<br>
+          ただシェーピングアンプを用いるとエネルギー計測ができなくなってしまう，厳密に言うと精度もクソも無くなってしまうので，できれば避けたいと考えています．<br>
+          ゆえに，部品購入記録で書いたようななるべく安価で高性能なSiPDを選んでみて，まずはシェーピングアンプ無しで実験を進める予定です．<br>
+          この実験は2C53Tで進めると精度の良いデータが取れないので，大学の設備を借りる予定です．<br>
+          ホント，小林先生には感謝しかないですわ…<br>
+          っちゅうことで記事を書いている時点では部品待ち状態なので，部品が届いたら次の記事を書くことにします．
+        </p>
+      </div>
 
-    まず，<b>SiPDは逆バイアスをかけて使う</b>ことでした．<br>
-    僕自身，SiPDを使う回路の設計が初めてで，今回初めて知りました．<br>
-    実は<a href="https://www.rcnp.osaka-u.ac.jp/~ota/group/?Member" target="_blank" rel="noopener noreferrer">小林信之准教授(大阪大学・核物理研究センター)</a>と共に研究を進めさせていただいています．<br>
-    その小林先生に回路案を送って修正点などを教えていただいていたのですが，そこで初めて知りました．<br><br>
+      <nav class="post-nav" aria-label="前後記事ナビゲーション">
+        <a href="./parts-prepare.html">← 前回:放射線測定器に使う部品を買い揃える</a>
+        <a href="./sds1204x-e.html">次回:大学からSIGLENT SDS1204X-Eを借りた →</a>
+      </nav>
 
-    そして<b>シェーピングアンプが必要</b>ということも教えていただきました．<br>
-    シェーピングアンプというのは信号を矩形波状にすることで継続時間を伸ばすものだそうです．<br>
-    ArduinoのIO速度を測った結果を書き残した<a href="./arduino-measure1.html">第1回</a>と<a href="./arduino-measure2.html">第2回</a>の記事で分かったようにどれだけ高性能なArduinoでもサンプリングレートは落ちてしまうのです．<br>
-    それを解決するためにシェーピングアンプで信号の継続時間を伸ばして検出しやすくするのです．<br><br>
-
-    ただシェーピングアンプを用いるとエネルギー計測ができなくなってしまう，厳密に言うと<b>精度もクソも無くなってしまう</b>ので，できれば避けたいと考えています．<br>
-    ゆえに，<a href="./parts-prepare.html">部品購入記録</a>で書いたようななるべく安価で高性能なSiPDを選んでみて，まずはシェーピングアンプ無しで実験を進める予定です．<br>
-    この実験は<a href="./../2c53t/2c53t-index.html">2C53T</a>で進めると精度の良いデータが取れないので，大学の設備を借りる予定です．<br>
-    ホント，小林先生には感謝しかないですわ…<br><br>
-
-    っちゅうことで記事を書いている時点では部品待ち状態なので，部品が届いたら次の記事を書くことにします．
-  </p>
-  <div>
-    <div align="left"><a href="./parts-prepare.html">← 前回:放射線測定器に使う部品を買い揃える</a></div>
-    <div align="right"><a href="./sds1204x-e.html">次回:大学からSIGLENT SDS1204X-Eを借りた →</div>
-  </div>
-  <br>
-  <a href="./geiger-index.html">←目次へ戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次へ戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
