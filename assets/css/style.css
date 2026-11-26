@@ -1,0 +1,416 @@
+@charset "UTF-8";
+
+/* =========================================
+   1. 変数定義（サイト全体の配色・サイズ管理）
+   ========================================= */
+:root {
+  --bg-body: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-header: #333333;
+  --text-main: #222222;
+  --text-muted: #555555;
+  --text-inverse: #ffffff;
+  --accent-color: #0055a4;
+  --accent-hover: #003d7a;
+  --border-color: #dddddd;
+  --border-strong: #999999;
+  --btn-success: #2e7d32;
+  --btn-success-hover: #1b5e20;
+
+  --header-height: 64px;
+  --content-width: 720px;
+  --font-base: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+/* =========================================
+   2. リセット & ベース設定
+   ========================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 20px);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding: calc(var(--header-height) + 24px) 16px 40px;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* =========================================
+   3. 共通ヘッダー & ロゴ & ナビゲーション
+   ========================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--bg-header);
+  color: var(--text-inverse);
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  max-width: 960px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-inverse);
+  text-decoration: none;
+  height: 44px;
+  transition: opacity 0.2s ease;
+}
+
+.site-logo:hover {
+  color: var(--text-inverse);
+  opacity: 0.85;
+}
+
+.site-logo svg {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* PC用ナビゲーション */
+.nav-pc {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-pc a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-pc a:hover {
+  color: var(--text-inverse);
+  border-bottom-color: var(--text-inverse);
+}
+
+/* スマホ用三点リーダーメニュー（デフォルト非表示） */
+.nav-mobile {
+  display: none;
+  position: relative;
+}
+
+.nav-mobile summary {
+  list-style: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-inverse);
+  font-size: 1.5rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.nav-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-mobile summary:hover,
+.nav-mobile[open] summary {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-mobile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background-color: var(--bg-header);
+  border: 1px solid #444444;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-mobile-dropdown a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-mobile-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.nav-mobile-dropdown a:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-inverse);
+}
+
+/* レスポンシブ切り替え（スマホ画面：640px以下） */
+@media (max-width: 640px) {
+  .nav-pc {
+    display: none;
+  }
+  .nav-mobile {
+    display: block;
+  }
+}
+
+/* =========================================
+   4. 見出し・セクション・リスト
+   ========================================= */
+main section {
+  margin-bottom: 2.5rem;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid var(--text-main);
+  padding-bottom: 0.4em;
+  margin: 0.5em 0 1em;
+}
+
+h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+  margin: 1.6em 0 0.8em;
+}
+
+h3 {
+  font-size: 1.1rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.25em;
+  margin: 1.3em 0 0.6em;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin: 0.6em 0 1.2em;
+}
+
+li {
+  margin-bottom: 0.35em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+.notice-box {
+  background-color: var(--bg-surface);
+  border-left: 4px solid var(--accent-color);
+  padding: 0.75em 1em;
+  margin: 1em 0;
+  font-size: 0.95rem;
+}
+
+.scroll-hint {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 0.5em;
+}
+
+/* =========================================
+   5. 所有商品リストテーブル（横スクロール対応）
+   ========================================= */
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  margin: 1em 0;
+}
+
+.item-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+}
+
+.item-table th,
+.item-table td {
+  border: 1px solid var(--border-strong);
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+
+.item-table th {
+  background-color: #f0f2f5;
+  text-align: right;
+  white-space: nowrap;
+  font-weight: bold;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+}
+
+.item-table td {
+  text-align: center;
+  min-width: 115px;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.item-table td img {
+  max-height: 80px;
+  max-width: 100px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.no-image-badge {
+  display: inline-block;
+  padding: 20px 8px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* =========================================
+   6. 折りたたみ（過去の記事など）
+   ========================================= */
+details.archive-details {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.8em 1em;
+}
+
+details.archive-details summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =========================================
+   7. お問い合わせフォーム & フッター
+   ========================================= */
+.contact-form-wrapper {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.contact-form-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: none;
+}
+
+.form-credit {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.4em;
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   8. Cookie同意モーダル
+   ========================================= */
+#cookie-consent-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+#cookie-consent-modal {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  padding: 1.8em;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  max-width: 380px;
+  width: 100%;
+}
+
+#cookie-consent-modal h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+#cookie-consent-modal button {
+  margin-top: 1em;
+  padding: 0.65em 1.8em;
+  background: var(--btn-success);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+#cookie-consent-modal button:hover {
+  background: var(--btn-success-hover);
+}
