@@ -3,247 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="シリコンフォトダイオードを放射線測定器に用いるにあたって，それが適しているか確かめてみました．計測には少し苦労しました．">
-  <meta name="keywords" content="研究, 計測, 放射線測定器, 評価, 測定, シリオンフォトダイオード, ノイズ, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>SiPDの計測 | Hobbuy Blog</title>
+  <meta name="description" content="浜松ホトニクス製SiPD（S5821-02）とプラスチックシンチレーターを組み合わせ、多重遮光・アルミホイルシールド構造とERESモード・帯域制限を用いて放射線由来の単発パルス波形を観測しました。">
+  <meta name="keywords" content="研究, 電子工作, 放射線測定器, SiPD, S5821-02, プラスチックシンチレーター, シールド, ERES">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>SiPDの計測 | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="SiPDの計測 | Hobbuy Blog">
+  <meta property="og:description" content="浜松ホトニクス製SiPD（S5821-02）とプラスチックシンチレーターを組み合わせ、多重遮光・アルミホイルシールド構造とERESモード・帯域制限を用いて放射線由来の単発パルス波形を観測しました。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/geiger-research/sipd-measure.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">9.SiPDが使用に適しているか確かめる<span class="post-date"> - 2025.12.14</span></h1>
+      </header>
 
-  <section id="top"><h2>9.SiPDが使用に適しているか確かめる<small> - 2025.12.14</small></h2></section>
-  <p>
-    ここで，そもそも今回採用したシリコンフォトダイオード(SiPD)のS5821-02が今回の制作というか研究に適しているか確かめておきます．<br>
-    S5821-02は安価な割には感度が少し高めのSiPDです．<br>
-    とはいえ，Arduinoでの検知に最適かと言われれば未知の領域なのでそれを検証していこうと思います．<br><br>
+      <div class="post-body">
+        <p>
+          ここで，そもそも今回採用したシリコンフォトダイオード(SiPD)のS5821-02が今回の制作というか研究に適しているか確かめておきます．<br>
+          S5821-02は安価な割には感度が少し高めのSiPDです．<br>
+          とはいえ，Arduinoでの検知に最適かと言われれば未知の領域なのでそれを検証していこうと思います．<br>
+          シールドなどの関係で，測定環境の写真はあまりに意味不明な見た目だったのでブログには載せないことにしておきます．<br>
+          ただ，測定環境の準備の順番だけ書き残しておこうと思います．
+        </p>
 
-    シールドなどの関係で，測定環境の写真はあまりに意味不明な見た目だったのでブログには載せないことにしておきます．<br>
-    ただ，測定環境の準備の順番だけ書き残しておこうと思います．<br>
+        <ol>
+          <li>45基板にSiPDを実装</li>
+          <li>SiPDのカソードとケースグラウンドを接続(簡易測定のため)</li>
+          <li>45基板からGND/カソードピンとアノードピンをオシロスコープに接続</li>
+          <li>45基板にプラスチックシンチレーターをカプトンテープで固定</li>
+          <li>完成した裸の計測ユニットをアルミホイルを紙で挟んだ遮光紙で覆う</li>
+          <li>遮光した計測ユニットを更にアルミホイルで覆う</li>
+          <li>一番外側のアルミホイルにオシロスコープを接続(GND接続を忘れずに・シールドとして)</li>
+        </ol>
 
-    <ol>
-      <li>45基板にSiPDを実装</li>
-      <li>SiPDのカソードとケースグラウンドを接続(簡易測定のため)</li>
-      <li>45基板からGND/カソードピンとアノードピンをオシロスコープに接続</li>
-      <li>45基板にプラスチックシンチレーターをカプトンテープで固定</li>
-      <li>完成した裸の計測ユニットをアルミホイルを紙で挟んだ遮光紙で覆う</li>
-      <li>遮光した計測ユニットを更にアルミホイルで覆う</li>
-      <li>一番外側のアルミホイルにオシロスコープを接続(GND接続を忘れずに・シールドとして)</li>
-    </ol><br>
+        <p>
+          これだけで簡易的に計測する準備が整いました．<br>
+          一番外側のアルミホイルは下手な覆い方をすると計測に誤差を生むことになるので丁寧に巻きます．<br>
+          計測途中にシールドや遮光紙が外れられては測定条件が崩れて困るので，適宜ゼムクリップなどで留めておきます．<br>
+          ではここで計測結果を見てみましょう．<br>
+          と言いたいのですが，微小な信号なので計測にはなかなか苦労しました．<br>
+          僕の計測環境は，何の変哲もない勉強机です．<br>
+          そこで使っているPanasonicのデスクライトが電磁ノイズをかなり撒き散らかすので，ノイズ波形が重畳されてしまいます．<br>
+          ただ，幸いノイズを拾っているのはパッシブプローブのケーブルやオシロ本体です．<br>
+          計測ユニットでは拾っていない感じでした．<br>
+          そこで，いくつかの方法でそれに対処し対応しました．<br>
+          まず，ERESモードを設定します．<br>
+          あまり仕組みを理解していませんがなにかしらの処理を行ってビット数を拡張するモードです．<br>
+          Hi-Resモードなんかの呼び方もあります．<br>
+          ただERESモードにも欠点があって移動平均処理をかけるため波形の取り込みレートが落ちていまいます．<br>
+          最大の3.0ビット拡張にすればかなりノイズの影響は少なくなりますが，処理に時間がかかって計測ができないような状態だったので2.0ビット拡張としました．<br>
+          次にプローブの減衰比をx1にします．<br>
+          高周波の信号は扱わないので，x1でも問題ありません．<br>
+          使っているPP215パッシブプローブはx1時に6 MHzまで帯域が落ちるのでむしろノイズの意味でも好都合かもしれません(?)<br>
+          そしてオシロ側も気休め程度に帯域幅制限をかけます．<br>
+          20 MHzで制限がかかるのを，多少は効果があると思います．<br>
+          帯域幅制限をかけて大丈夫なのかと思われるかもしれませんが，Arduino Uno R4のADCサンプリングレートを計測した時に高周波が入り込んでも気にならないほどサンプリングが遅いのは判明しているので問題ありません．<br>
+          この状態で計測します．<br>
+          それでは測定結果です．
+        </p>
 
-    これだけで簡易的に計測する準備が整いました．<br>
-    一番外側のアルミホイルは下手な覆い方をすると計測に誤差を生むことになるので丁寧に巻きます．<br>
-    計測途中にシールドや遮光紙が外れられては測定条件が崩れて困るので，適宜ゼムクリップなどで留めておきます．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの画像ファイル名・パス要確認 -->
+          <img src="./sipd_waveform.png" alt="シールドに接続したチャネルの波形とSiPDの信号線の波形を比較" loading="lazy">
+          <figcaption>シールドに接続したチャネルの波形とSiPDの信号線の波形を比較</figcaption>
+        </figure>
 
-    ではここで計測結果を見てみましょう．<br>
-    と言いたいのですが，微小な信号なので計測にはなかなか苦労しました．<br>
-    僕の計測環境は，何の変哲もない勉強机です．<br>
-    そこで使っているPanasonicのデスクライトが電磁ノイズをかなり撒き散らかすので，ノイズ波形が重畳されてしまいます．<br>
-    ただ，幸いノイズを拾っているのはパッシブプローブのケーブルやオシロ本体です．<br>
-    計測ユニットでは拾っていない感じでした．<br><br>
+        <p>
+          SiPDを接続したCh2(紫)の波形とシールドに接続したCh3(青)を比較すると前者のSiPD波形には振幅が大きい波形が観測されました．<br>
+          Ch2とCh3は垂直感度などの設定はすべてそろえているのですが，Ch3にはない単発波形が出ています．<br>
+          今回の測定で分かったのは，研究の成功に希望を持っても大丈夫ということです．<br>
+          ただ，ノイズのシールドやそもそもノイズを生じない設計にすることは重要です．<br>
+          Arduinoのピンソケットは共振を起こします．<br>
+          ただ，研究を進めるに当たって多少の希望の光が見えたので良かったです．
+        </p>
+      </div>
 
-    そこで，いくつかの方法でそれに対処し対応しました．<br>
-    まず，ERESモードを設定します．<br>
-    あまり仕組みを理解していませんがなにかしらの処理を行ってビット数を拡張するモードです．<br>
-    Hi-Resモードなんかの呼び方もあります．<br>
-    ただERESモードにも欠点があって移動平均処理をかけるため波形の取り込みレートが落ちていまいます．<br>
-    最大の3.0ビット拡張にすればかなりノイズの影響は少なくなりますが，処理に時間がかかって計測ができないような状態だったので2.0ビット拡張としました．<br><br>
+      <nav class="post-nav" aria-label="前後記事ナビゲーション">
+        <a href="./shield-effect.html">← 前回:シールドの効果を確かめる</a>
+        <a href="./pcb1.html">次回:放射線計測器の試作機1号を発注 →</a>
+      </nav>
 
-    次にプローブの減衰比をx1にします．<br>
-    高周波の信号は扱わないので，x1でも問題ありません．<br>
-    使っているPP215パッシブプローブはx1時に6 MHzまで帯域が落ちるのでむしろノイズの意味でも好都合かもしれません(?)<br>
-    そしてオシロ側も気休め程度に帯域幅制限をかけます．<br>
-    20 MHzで制限がかかるのを，多少は効果があると思います．<br><br>
-
-    帯域幅制限をかけて大丈夫なのかと思われるかもしれませんが，<a href="./arduino-measure2.html">Arduino Uno R4のADCサンプリングレートを計測した時</a>に高周波が入り込んでも気にならないほどサンプリングが遅いのは判明しているので問題ありません．<br>
-    この状態で計測します．<br><br>
-
-    それでは測定結果です．<br>
-    <img src="./resource/sipd.png" width="360px" alt="シールドに接続したチャネルの波形とSiPDの信号線の波形を比較すると，後者の波形には明らかに振幅の大きい単発波形がいくつか観測される．"><br>
-    SiPDを接続したCh2(紫)の波形とシールドに接続したCh3(青)を比較すると前者のSiPD波形には振幅が大きい波形が観測されました．<br>
-    Ch2とCh3は垂直感度などの設定はすべてそろえているのですが，Ch3にはない単発波形が出ています．<br><br>
-
-    今回の測定で分かったのは，研究の<b>成功に希望を持っても大丈夫</b>ということです．<br>
-    ただ，ノイズのシールドやそもそもノイズを生じない設計にすることは重要です．<br>
-    Arduinoのピンソケットは共振を起こします．<br>
-    ただ，研究を進めるに当たって多少の希望の光が見えたので良かったです．
-  </p>
-  <div>
-    <div align="left"><a href="./shield-effect.html">← 前回:シールドの効果を確かめる</a></div>
-    <div align="right"><a href="./pcb1.html">次回:放射線計測器の試作機1号を発注 →</a></div>
-  </div>
-  <br>
-  <a href="./geiger-index.html">←目次へ戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次へ戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
