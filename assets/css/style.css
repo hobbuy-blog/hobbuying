@@ -414,3 +414,112 @@ details.archive-details summary {
 #cookie-consent-modal button:hover {
   background: var(--btn-success-hover);
 }
+
+/* =========================================
+   9. 個別記事ページ用スタイル
+   ========================================= */
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--border-strong);
+  padding-bottom: 0.4em;
+  margin: 0.2em 0 0.8em;
+}
+
+.post-date {
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: var(--text-muted);
+}
+
+/* 記事内目次ボックス */
+.post-toc {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.8em 1.2em;
+  margin: 1.2em 0 2em;
+}
+
+.toc-title {
+  font-weight: bold;
+  margin: 0 0 0.4em;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.post-toc ul {
+  margin: 0;
+  padding-left: 1.3em;
+}
+
+/* 記事内画像とキャプション */
+.post-figure {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.post-figure img {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-surface);
+}
+
+.post-figure figcaption {
+  margin-top: 0.5em;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 記事内スペック表・データテーブル */
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  background-color: var(--bg-surface);
+  font-size: 0.92rem;
+}
+
+.post-body th,
+.post-body td {
+  border: 1px solid var(--border-strong);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.post-body th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+}
+
+/* 記事内コードブロック（Arduino / Python等） */
+.post-body pre {
+  background-color: #26292e;
+  color: #f1f5f9;
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.post-body :not(pre) > code {
+  background-color: #eaecef;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* メインページへ戻るリンク */
+.post-back {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--border-color);
+}
