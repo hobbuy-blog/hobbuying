@@ -3,307 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ウォークマンA50シリーズの1つの完成系，NW-A50シリーズの基本モデルA55をレビューします．比較的入門機に近い位置付けの機種ですが，ウォークマンらしい，美しく力強い音を鳴らしてくれます．">
-  <meta name="keywords" content="レビュー, ブログ, ガジェット, 評価, プログラム, ウォークマン, Walkman, NW-A55, NW-A50">
-  <!-- Change tags in "keywords" -->
+  <title>NW-A55レビュー | Hobbuy Blog</title>
+  <meta name="description" content="2018年発売・独自OS搭載のウォークマン「Sony NW-A55」を中古で購入！押し出しアルミ切削筐体の質感や操作性、USB-DACモード、ATH-E40＋RADWIMPS楽曲でのS-MASTER HX音質レビューをお届けします。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, オーディオ, ウォークマン, WALKMAN, SONY, NW-A55, S-MASTER HX">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>NW-A55レビュー | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="NW-A55レビュー | Hobbuy Blog">
+  <meta property="og:description" content="2018年発売・独自OS搭載のウォークマン「Sony NW-A55」を中古で購入！押し出しアルミ切削筐体の質感や操作性、USB-DACモード、ATH-E40＋RADWIMPS楽曲でのS-MASTER HX音質レビューをお届けします。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/nw-a55/">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/nw-a55/resource/play.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！<span class="post-date"> - 2026.10.26</span></h1>
+      </header>
 
-  <section id="top"><h2>ついに買ってしまった… SonyのウォークマンNW-A55をレビュー！<small> - 2026.10.26</small></h2></section>
-  <p>
-    お久しぶりです．<br>
-    今回は，久しぶりにある意味で「僕らしい」記事になります．<br>
-    今日の内容はSony NW-A55，題名にも書いていますがウォークマンです．<br><br>
+      <div class="post-body">
+        <p>
+          お久しぶりです．<br>
+          今回は，久しぶりにある意味で「僕らしい」記事になります．<br>
+          今日の内容はSony NW-A55，題名にも書いていますがウォークマンです．<br>
+          NW-A55は2018年発売のNW-A50シリーズの<strong>16GB・イヤホン付属なし</strong>の機種となります．<br>
+          今更2018年の機種を買っているということは，つまり中古で購入したということです．<br>
+          バッテリー劣化こそ(かなり)ありますが，良い買い物だったと思います．
+        </p>
 
-    NW-A55は2018年発売のNW-A50シリーズの<b>16GB・イヤホン付属なし</b>の機種となります．<br>
-    今更2018年の機種を買っているということは，つまり中古で購入したということです．<br>
-    バッテリー劣化こそ(かなり)ありますが，良い買い物だったと思います．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの2枚の画像ファイル名・パスに一致しているかご確認ください -->
+          <img src="./resource/playing.jpg" alt="内蔵メモリに保存した楽曲を再生中のウォークマンNW-A55" loading="lazy">
+          <img src="./resource/usb-dac.jpg" alt="USB DACモード使用中のウォークマンNW-A55" loading="lazy">
+          <figcaption>右 : 再生中 / 左 : USB DACモード使用中．詳しくは触れませんが，Walkmanの音質設定を適用でき，いつもより良い音でPCからの音声を楽しむことができます．</figcaption>
+        </figure>
 
-    <img src="./playing.png" width="50%" alt="内蔵メモリに保存した楽曲を再生中のウォークマンNW-A55" border="0"><img src="./usb-dac.png" width="50%" alt="USB DACモード使用中のウォークマンNW-A55" border="0"><br>
-    右 : 再生中<br>
-    左 : USB DACモード使用中．詳しくは触れませんが，Walkmanの音質設定を適用でき，いつもより良い音でPCからの音声を楽しむことができます．
-  </p>
-  <hr>
-  <h3>仕様ほか</h3>
-  <p>
-    <b>寸法</b> : 幅54.70mm×高97.25mm×厚10.672mm<sup>†</sup><br>
-    <b>充電・通信</b> : WM-PORT(独自規格)，NFC(Bluetooth接続に使用)<br>
-    <b>音声入力</b> : 内蔵メモリ(16GB)，外部microSDXC(256GBまで)，USB-DACモード，Bluetoothレシーバモード<br>
-    <b>音声出力</b> : ステレオミニジャック(3.5mm)，Bluetooth，WM-PORT(専用アクセサリが必要)<br><br>
+        <hr>
 
-    <sup>†</sup>:ボタン等突起部を除きます．また測定の最小桁は，幅と高さが0.05mm(アナログノギス)，厚さは0.002mm(マイクロメータ)です．
-  </p>
-  <hr>
-  <h3>モノ自体への感想</h3>
-  <p>
-    まず，筐体がすごく良いです．<br>
-    この世代からAシリーズも押し出しアルミの切削筐体に変更されたらしいのですが，まず質感がいいです．<br>
-    「持つ喜び」を味わえます．<br>
-    寸法に書いた数値から予想できるかと思いますが，かなり小柄な筐体です．<br>
-    しかし小柄な筐体とは言えども公称値で99g，ずっしりとした感触があります．<br>
-    中身が詰まっている重さです．<br><br>
+        <h2>仕様ほか</h2>
+        <p>
+          <strong>寸法</strong> : 幅54.70mm×高97.25mm×厚10.672mm<sup>†</sup><br>
+          <strong>充電・通信</strong> : WM-PORT(独自規格)，NFC(Bluetooth接続に使用)<br>
+          <strong>音声入力</strong> : 内蔵メモリ(16GB)，外部microSDXC(256GBまで)，USB-DACモード，Bluetoothレシーバモード<br>
+          <strong>音声出力</strong> : ステレオミニジャック(3.5mm)，Bluetooth，WM-PORT(専用アクセサリが必要)<br>
+          <span class="small-note"><sup>†</sup>:ボタン等突起部を除きます．また測定の最小桁は，幅と高さが0.05mm(アナログノギス)，厚さは0.002mm(マイクロメータ)です．</span>
+        </p>
 
-    そして次にソフト面です．<br>
-    A50シリーズまでは独自OSを積んでいます．(次機種A100シリーズからはAndroid)<br>
-    操作体験はかなり軽快ですね，引っかかりを感じることは全くありません．<br>
-    ただしアルバムを読み込むときに少々のタイムラグがあります．<br>
-    これはスマホのような高性能なメモリチップを積めないので仕方ないでしょう．<br>
-    遅延と言っても0.5秒以内には表示されます．<br><br>
+        <hr>
 
-    そして接続性ですが，WM-PORTは若干，頭を抱えたくもなりますが…<br>
-    まぁ充電くらいにしか使わないので目をつぶっておきます．<br>
-    イヤホンジャックは側面上側にあっても良いんじゃないかなと思いました．<br>
-    WM-PORTと同じ面にあると物理的干渉の可能性が無きにしも非ずだと思います．
-  </p>
-  <hr>
-  <h3>音質への感想</h3>
-  <p>
-    以前は基本的にXperia 10 VII(と5 IV)で聴いていましたが，やはり全くと言っていいほど違います．<br>
-    Xperia 5 IVなんかはCirrus Logicの35L41というアンプを積んでいて，スマホの中ではかなりいい音の部類ですが，比べられません．<br>
-    私が好んで聴く曲のうち，いくつかを例にして感じたものを書き連ねていきます．<br>
-    私の好みでRADWIMPSの曲しかないのはご容赦ください．
-  </p>
-  <p>
-    <b>検証環境</b><br>
-    ⭐︎本体再生設定<br>
-    DSEE HX，DCフェーズリニアライザ，バイナルプロセッサは有効<br>
-    イコライザ，サラウンド，ノーマライザは無効<br><br>
+        <h2>モノ自体への感想</h2>
+        <p>
+          まず，筐体がすごく良いです．<br>
+          この世代からAシリーズも押し出しアルミの切削筐体に変更されたらしいのですが，まず質感がいいです．<br>
+          「持つ喜び」を味わえます．<br>
+          寸法に書いた数値から予想できるかと思いますが，かなり小柄な筐体です．<br>
+          しかし小柄な筐体とは言えども公称値で99g，ずっしりとした感触があります．<br>
+          中身が詰まっている重さです．
+        </p>
 
-    ⭐︎イヤホン<br>
-    audio-technica ATH-E40<br>
-    標準ケーブル使用，3.5mmステレオミニ接続<br><br>
+        <p>
+          そして次にソフト面です．<br>
+          A50シリーズまでは独自OSを積んでいます．(次機種A100シリーズからはAndroid)<br>
+          操作体験はかなり軽快ですね，引っかかりを感じることは全くありません．<br>
+          ただしアルバムを読み込むときに少々のタイムラグがあります．<br>
+          これはスマホのような高性能なメモリチップを積めないので仕方ないでしょう．<br>
+          遅延と言っても0.5秒以内には表示されます．
+        </p>
 
-    ⭐︎使用音源<br>
-    「グランドエスケープ feat. 三浦透子」，「夕星-ゆうづつ-」，「汝、星のごとく」のみハイレゾ音源(FLAC | 48kHz/24bit)<br>
-    それら以外は全てCDからのリッピング音源(MP3 | 44.1kHz/16bit)
+        <p>
+          そして接続性ですが，WM-PORTは若干，頭を抱えたくもなりますが…<br>
+          まぁ充電くらいにしか使わないので目をつぶっておきます．<br>
+          イヤホンジャックは側面上側にあっても良いんじゃないかなと思いました．<br>
+          WM-PORTと同じ面にあると物理的干渉の可能性が無きにしも非ずだと思います．
+        </p>
 
-  </p>
-  <hr>
-  <details><summary><b>RADWIMPS</b>「<b>グランドエスケープ feat. 三浦透子</b>」from「<b>天気の子 complete version</b>」</summary>
-  <p>
-    私が低域から高域の全ての雰囲気を感じるためにモニター音源のように使っている曲です．<br>
-    伴奏のピアノが明らかに繊細になりました．<br>
-    革命的に音が良くなったか，と言われるとそうではありませんが，とにかく表現が丁寧になった，と言い表すのが最も適切だと思います．<br>
-    ラストの「夢に僕らで帆を張って　来たるべき日のために〜」のパートは躍動感，あえて別の表現をするならば駆け抜けるような感覚が非常に好きなのですが，そこの音の抜け感が向上してより爽快な音になったと感じました．<br>
-    一緒になって歌っている野田洋次郎さんの声の分離感も良かったです．
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>ものもらい</b>」from「<b>絶体絶命</b>」</summary>
-  <p>
-    定位の確認によく使っている曲です．<br>
-    3分30秒あたりに伴奏を止めてドラムだけを鳴らす部分があるのですが，崩れがちなドラムの定位を手前すぎず奥すぎずの完璧な具合で鳴らしてくれました．<br>
-    イヤホンやアンプの素性によっては奥に沈み込みすぎて定位が不安定になったり，逆に手前に来すぎることがあるのですが，少なくとも私の使用機材では相性が良かったようです．<br>
-    参考程度に，初代S-MASTER(無印)を搭載したボイスレコーダでは沈み込む傾向でしたので，本機のS-MASTER HX(第2世代)ではかなり良くなっているんでしょう．
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>やどかり</b>」from「<b>マニフェスト</b>」</summary>
-  <p>
-    信じられないほど綺麗にドラムの低音が響きます．<br>
-    私はEQ(イコライザ)は変更しない派閥の人間なので，ほぼ素の状態で聴いていますが心地良い強さでまっすぐと突き進んでくれる元気な音作りです．<br>
-    逆にドラムの主張以外にそこまで大きな差は感じませんでした．
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>夕星-ゆうづつ-</b>」from「<b>夕星-ゆうづつ-</b>」</summary>
-  <p>
-    良い…んですが，この曲はあまり差を感じませんでした．<br>
-    この曲はハイレゾ音源以外にもAAC音源(品質はCDと同等)も持っているので比較したのですが，それでも差を感じられませんでした．<br>
-    耳が腐っているのかもしれません()
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>祈跡</b>」from「<b>祈跡</b>」</summary>
-  <p>
-    アコギの音がものすごく美しくなったように感じます．<br>
-    しかもアコギとボーカルがしっかり分離感を持って存在しています．<br>
-    しかしエレキも入ってくると当時の野田洋次郎さん声質か，当時のマスタリングの問題か，使用機材の問題かは分かりませんがボーカルが隠される傾向がありました．
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>汝、星のごとく</b>」from「<b>汝、星のごとく</b>」</summary>
-  <p>
-    またしてもアコギが美しかったです．<br>
-    この曲も案外(Xperiaと)差がないかな，と思っていたのですがコーラスが始まった途端にその考えを改めました．<br>
-    コーラスの透明感が感動そのものです．
-  </p>
-  </details>
-  <details><summary><b>RADWIMPS</b>「<b>大団円 feat.ZORN</b>」from「<b>大団円 feat.ZORN</b>」</summary>
-  <p>
-    やはり低音の響きが快く，また心地良いです．<br>
-    「明日が僕を変えてくれるわけじゃないから〜」という歌詞のところは少し高めのキーで野田洋次郎さんが歌っているのですが，そこはより透き通った声になり，またこれはどの曲にも言えることですがより近くに歌声があるように感じました．<br>
-    ラストの「勝たす気なんかないサダメも　片付けてやるさ今日この場で〜」の部分も迫力が増して気持ち良いです．
-  </p>
-  </details>
-  <a href="../index.html">←メインページに戻る</a>
+        <hr>
 
+        <h2>音質への感想</h2>
+        <p>
+          以前は基本的にXperia 10 VII(と5 IV)で聴いていましたが，やはり全くと言っていいほど違います．<br>
+          Xperia 5 IVなんかはCirrus Logicの35L41というアンプを積んでいて，スマホの中ではかなりいい音の部類ですが，比べられません．<br>
+          私が好んで聴く曲のうち，いくつかを例にして感じたものを書き連ねていきます．<br>
+          私の好みでRADWIMPSの曲しかないのはご容赦ください．
+        </p>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
+        <div class="info-box">
+          <p><strong>検証環境</strong></p>
+          <p>
+            ⭐︎本体再生設定<br>
+            DSEE HX，DCフェーズリニアライザ，バイナルプロセッサは有効<br>
+            イコライザ，サラウンド，ノーマライザは無効
+          </p>
+          <p>
+            ⭐︎イヤホン<br>
+            audio-technica ATH-E40<br>
+            標準ケーブル使用，3.5mmステレオミニ接続
+          </p>
+          <p>
+            ⭐︎使用音源<br>
+            「グランドエスケープ feat. 三浦透子」，「夕星-ゆうづつ-」，「汝、星のごとく」のみハイレゾ音源(FLAC | 48kHz/24bit)<br>
+            それら以外は全てCDからのリッピング音源(MP3 | 44.1kHz/16bit)
+          </p>
+        </div>
 
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
+        <hr>
 
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
+        <h3><strong>RADWIMPS</strong>「<strong>グランドエスケープ feat. 三浦透子</strong>」from「<strong>天気の子 complete version</strong>」</h3>
+        <p>
+          私が低域から高域の全ての雰囲気を感じるためにモニター音源のように使っている曲です．<br>
+          伴奏のピアノが明らかに繊細になりました．<br>
+          革命的に音が良くなったか，と言われるとそうではありませんが，とにかく表現が丁寧になった，と言い表すのが最も適切だと思います．<br>
+          ラストの「夢に僕らで帆を張って 来たるべき日のために〜」のパートは躍動感，あえて別の表現をするならば駆け抜けるような感覚が非常に好きなのですが，そこの音の抜け感が向上してより爽快な音になったと感じました．<br>
+          一緒になって歌っている野田洋次郎さんの声の分離感も良かったです．
+        </p>
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+        <h3><strong>RADWIMPS</strong>「<strong>ものもらい</strong>」from「<strong>絶体絶命</strong>」</h3>
+        <p>
+          定位の確認によく使っている曲です．<br>
+          3分30秒あたりに伴奏を止めてドラムだけを鳴らす部分があるのですが，崩れがちなドラムの定位を手前すぎず奥すぎずの完璧な具合で鳴らしてくれました．<br>
+          イヤホンやアンプの素性によっては奥に沈み込みすぎて定位が不安定になったり，逆に手前に来すぎることがあるのですが，少なくとも私の使用機材では相性が良かったようです．<br>
+          参考程度に，初代S-MASTER(無印)を搭載したボイスレコーダでは沈み込む傾向でしたので，本機のS-MASTER HX(第2世代)ではかなり良くなっているんでしょう．
+        </p>
+
+        <h3><strong>RADWIMPS</strong>「<strong>やどかり</strong>」from「<strong>マニフェスト</strong>」</h3>
+        <p>
+          信じられないほど綺麗にドラムの低音が響きます．<br>
+          私はEQ(イコライザ)は変更しない派閥の人間なので，ほぼ素の状態で聴いていますが心地良い強さでまっすぐと突き進んでくれる元気な音作りです．<br>
+          逆にドラムの主張以外にそこまで大きな差は感じませんでした．
+        </p>
+
+        <h3><strong>RADWIMPS</strong>「<strong>夕星-ゆうづつ-</strong>」from「<strong>夕星-ゆうづつ-</strong>」</h3>
+        <p>
+          良い…んですが，この曲はあまり差を感じませんでした．<br>
+          この曲はハイレゾ音源以外にもAAC音源(品質はCDと同等)も持っているので比較したのですが，それでも差を感じられませんでした．<br>
+          耳が腐っているのかもしれません()
+        </p>
+
+        <h3><strong>RADWIMPS</strong>「<strong>祈跡</strong>」from「<strong>祈跡</strong>」</h3>
+        <p>
+          アコギの音がものすごく美しくなったように感じます．<br>
+          しかもアコギとボーカルがしっかり分離感を持って存在しています．<br>
+          しかしエレキも入ってくると当時の野田洋次郎さん声質か，当時のマスタリングの問題か，使用機材の問題かは分かりませんがボーカルが隠される傾向がありました．
+        </p>
+
+        <h3><strong>RADWIMPS</strong>「<strong>汝、星のごとく</strong>」from「<strong>汝、星のごとく</strong>」</h3>
+        <p>
+          またしてもアコギが美しかったです．<br>
+          この曲も案外(Xperiaと)差がないかな，と思っていたのですがコーラスが始まった途端にその考えを改めました．<br>
+          コーラスの透明感が感動そのものです．
+        </p>
+
+        <h3><strong>RADWIMPS</strong>「<strong>大団円 feat.ZORN</strong>」from「<strong>大団円 feat.ZORN</strong>」</h3>
+        <p>
+          やはり低音の響きが快く，また心地良いです．<br>
+          「明日が僕を変えてくれるわけじゃないから〜」という歌詞のところは少し高めのキーで野田洋次郎さんが歌っているのですが，そこはより透き通った声になり，またこれはどの曲にも言えることですがより近くに歌声があるように感じました．<br>
+          ラストの「勝たす気なんかないサダメも 片付けてやるさ今日この場で〜」の部分も迫力が増して気持ち良いです．
+        </p>
+      </div>
+
+      <div class="post-back">
+        <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
