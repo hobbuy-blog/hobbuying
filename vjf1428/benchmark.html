@@ -3,216 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VAIO VJF1428(カスタムモデル)のベンチマーク測定をしました．Cinebench R15とCrystal Disk Markの2ソフトで検証しましたが，非常に良いスコアを残しました．">
-  <meta name="keywords" content="レビュー, ブログ, ノート+パソコン, 評価, ベンチマーク, PC, VAIO, F14, VJF142">
-  <!-- Change tags in "keywords" -->
+  <title>VAIOベンチマーク | Hobbuy Blog</title>
+  <meta name="description" content="新VAIO F14（VJF1428 / Core 7 150U）のベンチマークをCinebench R15（マルチ1431cb・シングル262cb）とCrystalDiskMark（リード5005MB/s）で測定しました。">
+  <meta name="keywords" content="レビュー, ブログ, ガジェット, パソコン, ベンチマーク, Cinebench R15, CrystalDiskMark, VAIO, VJF1428">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>VAIOベンチマーク | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="VAIOベンチマーク | Hobbuy Blog">
+  <meta property="og:description" content="新VAIO F14（VJF1428 / Core 7 150U）のベンチマークをCinebench R15（マルチ1431cb・シングル262cb）とCrystalDiskMark（リード5005MB/s）で測定しました。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/vjf1428/benchmark.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">新VAIOのベンチマーク測定をする<span class="post-date"> - 2026.2.12</span></h1>
+      </header>
 
-  <section id="top"><h2>新VAIOのベンチマーク測定をする<small> - 2026.2.12</small></h2></section>
-  <p>
-    ということで新VAIOのベンチマーク測定をしていきます．<br>
-    使うソフトは古く良き2つ，Cinebench R15とCrystal Disk Markです．<br>
-    前者に関しては「今更Cinebench　R15かよ」と突っ込まれそうですが，R15しか使ってこなかったので，またR15が1番使われてきたのでこれを使います．<br>
-    負荷が程よいのでいつもこればっかり使っています．<br><br>
+      <div class="post-body">
+        <p>
+          ということで新VAIOのベンチマーク測定をしていきます．<br>
+          使うソフトは古く良き2つ，Cinebench R15とCrystal Disk Markです．<br>
+          前者に関しては「今更Cinebench R15かよ」と突っ込まれそうですが，R15しか使ってこなかったので，またR15が1番使われてきたのでこれを使います．<br>
+          負荷が程よいのでいつもこればっかり使っています．
+        </p>
 
-    <img src="./resource/cinebench.jpeg" width="100%" alt="Cinebench R15"><br>
-    こちらCinebenchです．<br>
-    なんか普通にスコアは健闘していると思います．<br>
-    マルチコアで1431 cbなので，普通に良いスコアです．<br>
-    デスクトップCPUならIntel第10世代のIntel Core i5 10400くらいに相当します．<br>
-    そしてシングルコアでも262 cb，えぇっと…<b>これは旧VAIOのマルチコアのスコアくらいに相当</b>します…<br>
-    よく頑張ってきたもんです．<br>
-    OpenGLの82.26 fpsも，内蔵GPU(iGPU)にしては相当に良いスコアだと思います．<br>
-    なんてったってTDPが15 WのCPUですからね．<br>
-    めちゃくちゃ快適です．<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの画像ファイル名・パス要確認 -->
+          <img src="./cinebench.png" alt="Cinebench R15" loading="lazy">
+        </figure>
 
-    <img src="./resource/diskmark.png" width="100%" alt="Crystal Disk Mark"><br>
-    SSDの速度です．<br>
-    シーケンシャルリード5005.20 MB/s，シーケンシャルライト3670.64 MB/sとかいう見たことのない数字を叩き出しています．<br>
-    スコアが異次元すぎて，もはや排熱が間に合っているかの方が心配です．<br>
-    そりゃぁ全てが快適ですよね．<br><br>
+        <p>
+          こちらCinebenchです．<br>
+          なんか普通にスコアは健闘していると思います．<br>
+          マルチコアで1431 cbなので，普通に良いスコアです．<br>
+          デスクトップCPUならIntel第10世代のIntel Core i5 10400くらいに相当します．<br>
+          そしてシングルコアでも262 cb，えぇっと…<strong>これは旧VAIOのマルチコアのスコアくらいに相当</strong>します…<br>
+          よく頑張ってきたもんです．<br>
+          OpenGLの82.26 fpsも，内蔵GPU(iGPU)にしては相当に良いスコアだと思います．<br>
+          なんてったってTDPが15 WのCPUですからね．<br>
+          めちゃくちゃ快適です．
+        </p>
 
-    <hr>
-    <br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの2枚目画像ファイル名・パス要確認 -->
+          <img src="./crystaldiskmark.png" alt="Crystal Disk Mark" loading="lazy">
+        </figure>
 
-    (…まぁ，恐ろしく重い3DモデルをSTEP形式で書き出すと流石にフリーズしました．そりゃそうですよ，他のソフトも起動していたんですから)<br>
-    <img src="./resource/fusion-freeze.png" width="100%" alt="Autodesk Fusionがフリーズした様子．描写のバグを伴っている．">
+        <p>
+          SSDの速度です．<br>
+          シーケンシャルリード5005.20 MB/s，シーケンシャルライト3670.64 MB/sとかいう見たことのない数字を叩き出しています．<br>
+          スコアが異次元すぎて，もはや排熱が間に合っているかの方が心配です．<br>
+          そりゃぁ全てが快適ですよね．
+        </p>
 
-  </p>
-  <a href="../index.html">←メインページに戻る</a>
+        <hr>
 
+        <p>(…まぁ，恐ろしく重い3DモデルをSTEP形式で書き出すと流石にフリーズしました．そりゃそうですよ，他のソフトも起動していたんですから)</p>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
+        <figure class="post-figure">
+          <!-- ※元HTMLの3枚目画像ファイル名・パス要確認 -->
+          <img src="./fusion_freeze.png" alt="Autodesk Fusionがフリーズした様子．描写のバグを伴っている．" loading="lazy">
+        </figure>
+      </div>
 
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
