@@ -3,241 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arduino(本記事ではDue)のIO速度を測っています．諸々の処理を含めた時間を計測しています．">
-  <meta name="keywords" content="計測, ブログ, Arduino, IO, プログラム, 研究, ADC, 電気, 電子工作">
-  <!-- Change tags in "keywords" -->
+  <title>ArduinoのIO速度① | Hobbuy Blog</title>
+  <meta name="description" content="RA4M1マイコン搭載Arduino Uno R4 MinimaとArduino DueのADCサンプリング速度（47,619 Sa/s vs 243,902 Sa/s）や条件分岐を含むIO反応速度をオシロスコープ2C53Tで検証します。">
+  <meta name="keywords" content="研究, 電子工作, Arduino, Uno R4 Minima, Arduino Due, RA4M1, ADC, サンプリングレート, 2C53T">
   <meta name="author" content="Hobbuy-Blog, bockring">
 
-  <title>ArduinoのIO速度① | Hobbuy Blog</title>
-  <style>
-    html {
-      scroll-padding-top: 100px;
-    }
-    body {
-      font-family: "Yu Gothic", "Meiryo", "MS PGothic", "Osaka", "Hiragino Kaku Gothic Pro", sans-serif;
-      background: #fafafa;
-      color: #222;
-      margin: 2rem auto;
-      max-width: 700px;
-      padding: 1rem;
-      line-height: 1.7;
-      padding-top: 70px;
-    }
-    h1 {
-      font-weight: bold;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.3em;
-    }
-    a {
-      color: #0055a4;
-    }
-    #cookie-consent-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.65);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #cookie-consent-modal {
-      background: #fff;
-      color: #222;
-      padding: 2em 2em 1.5em 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      text-align: left;
-      max-width: 90vw;
-      width: 350px;
-    }
-    cookie-consent-modal button {
-      margin-top: 1em;
-      padding: 0.7em 2em;
-      background: #fff;
-      color: #f20;
-      border: none;
-      border-radius: 5px;
-      font-size: 2em;
-      cursor: pointer;
-    }
-    #cookie-consent-modal button:hover {
-      background: #fff;
-    }
+  <!-- ファビコン & ホーム画面アイコン（全OS対応） -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/img/icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../assets/img/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/img/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/img/apple-touch-icon-120.png">
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 0.5em 0.25em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .site-title {
-      color: #fff;
-      font-size: 1em;
-      letter-spacing: 0px;
-    }
-    .site-title a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav {
-      margin-left: 2em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover {
-      color: rgba(0,0,0,0.25);
-    }
-  </style>
+  <!-- OGP設定 -->
+  <meta property="og:site_name" content="Hobbuy Blog | 趣味と購入のブログ">
+  <meta property="og:title" content="ArduinoのIO速度① | Hobbuy Blog">
+  <meta property="og:description" content="RA4M1マイコン搭載Arduino Uno R4 MinimaとArduino DueのADCサンプリング速度（47,619 Sa/s vs 243,902 Sa/s）や条件分岐を含むIO反応速度をオシロスコープ2C53Tで検証します。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hobbuy-blog.github.io/hobbuying/geiger-research/arduino-measure1.html">
+  <meta property="og:image" content="https://hobbuy-blog.github.io/hobbuying/assets/img/ogp-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bockringElec">
+
+  <!-- 共通CSS & 共通レイアウトJS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/common.js" defer></script>
 </head>
-<!-- 
-Link style:
- Inside of page : <a href="folderpath/filepath"></a>
- Out side of page : <a href="https://amzn.to/XXXXXX" target="_blank" rel="noopener noreferrer"></a>
-2nd type is a type that open in new window
--->
+
 <body>
-  <header>
-    <div class="site-title"><a href="../index.html"><b style="font-size: 1.5em;">Hobbuy Blog</b><br><b><small>趣味と購入のブログ</small></b></a></div>
-    <nav>
-      <a href="#top">ページトップ</a>
-    </nav>
-  </header>
+  <main id="top">
+    <article class="post-article">
+      <header class="post-header">
+        <h1 class="post-title">2.ArduinoのIO速度を測る①<span class="post-date"> - 2025.10.28</span></h1>
+      </header>
 
-  <section id="top"><h2>2.ArduinoのIO速度を測る①<small> - 2025.10.28</small></h2></section>
-  <p>
-    前回の記事に続き，今回はArduinoのIOの速度を測っていきます．<br>
-    手元にはDueしかないのですが，RA4M1マイコンのボードが必要になり，Uno R4 Minimaの互換ボードを購入しました．<br>
-    だからと言って互換品を大いにお勧めすることはできないので純正品の購入リンクを貼っておきます．<br><br>
+      <div class="post-body">
+        <p>
+          前回の記事に続き，今回はArduinoのIOの速度を測っていきます．<br>
+          手元にはDueしかないのですが，RA4M1マイコンのボードが必要になり，Uno R4 Minimaの互換ボードを購入しました．<br>
+          だからと言って互換品を大いにお勧めすることはできないので純正品の購入リンクを貼っておきます．<br>
+          <!-- ※元HTMLのAmazonアフィリエイトリンクURL要確認 -->
+          <a href="https://www.amazon.co.jp/dp/B0C8V88Z9D/?tag=bockring-22" target="_blank" rel="noopener noreferrer">Arduino Uno R4 Minima(純正)の購入はこちらから！</a><br>
+          前回の記事でも述べましたが，このボードのRA4M1マイコンは最大14 bitの高性能ADCを搭載しています．<br>
+          この高性能ADCを活用するためには，以下の処理が必要になります．
+        </p>
 
-    <a href="https://www.amazon.co.jp/dp/B0C78K4CD4?tag=bockring-22" target="_blank" rel="noopener noreferrer">Arduino Uno R4 Minima(純正)の購入はこちらから！</a><br><br>
+        <pre><code>void setup() {
+  analogReadResolution(14);
+}</code></pre>
 
-    前回の記事でも述べましたが，このボードのRA4M1マイコンは最大14 bitの高性能ADCを搭載しています．<br>
-    この高性能ADCを活用するためには，以下の処理が必要になります．
-  </p>
-  <pre style="background-color: #000; color: #fff;"><code>
-  void setup() {
-    analogReadResolution(14);
-  }
-  </code></pre>
-  <p>
-    この<code>analogReadResolution()</code>関数でADCの読み取りビット数を指定します．<br>
-    このADCは<b>ハードウェア14 bit</b>で，後からビット処理で10 bitに落としていると考えられます．<br>
-    ですが，そのことをすっかり忘れてADCの速度をビット数ごとに測ってみました．<br>
-    が，どれも同じだったので数字だけ言っておきます．<br>
-    結果は47,619 Sa/s(毎秒47,619読み取り)でした．<br>
-    その速度はArduinoの浮動小数点演算で導かれた値なので，桁数誤差は大きいです．<br>
-    ただ毎秒50,000読み取りには到らないという事実は分かりました．<br><br>
+        <p>
+          この<code>analogReadResolution()</code>関数でADCの読み取りビット数を指定しています．<br>
+          このADCは<strong>ハードウェア14 bit</strong>で，後からビット処理で10 bitに落としていると考えられます．<br>
+          ですが，そのことをすっかり忘れてADCの速度をビット数ごとに測ってみました．<br>
+          が，どれも同じだったので数字だけ言っておきます．<br>
+          結果は47,619 Sa/s(毎秒47,619読み取り)でした．<br>
+          その速度はArduinoの浮動小数点演算で導かれた値なので，桁数誤差は大きいです．<br>
+          ただ毎秒50,000読み取りには到らないという事実は分かりました．<br>
+          デジタル入力はアナログ入力の遅さとは裏腹に高速です．<br>
+          833,333 Sa/sです．<br>
+          不確かな記憶ですが，関数電卓で割り出した値は825,000 Sa/s程度だったと思います．<br>
+          Arduino Dueはアナログ入力243,902 Sa/sという，もはや比べるまでもない優秀な成績を残していますが，デジタル入力では同じ値を叩き出しています．<br>
+          放射線<strong>カウンター</strong>とするなたデジタル入力を用いるのが良さそうです．<br>
+          しかし簡易エネルギー測定も目指しているためアナログ入力で頑張ることにしています．
+        </p>
 
-    デジタル入力はアナログ入力の遅さとは裏腹に高速です．<br>
-    833,333 Sa/sです．<br>
-    不確かな記憶ですが，関数電卓で割り出した値は825,000 Sa/s程度だったと思います．<br><br>
+        <hr>
 
-    Arduino Dueはアナログ入力243,902 Sa/sという，もはや比べるまでもない優秀な成績を残していますが，デジタル入力では同じ値を叩き出しています．<br>
-    放射線<b>カウンター</b>とするなたデジタル入力を用いるのが良さそうです．<br>
-    しかし簡易エネルギー測定も目指しているためアナログ入力で頑張ることにしています．<br><br>
-    <hr>
-    次に，<b>IOの反応速度を測る</b>必要があります．<br>
-    なぜなら実際のコードはアナログ入力された値の処理やif文を用いた測定関連の処理があるからです．<br>
-    この測定は，計測以外の無駄な処理を挟みたくないため<a href="./../2c53t/2c53t-index.html">先日紹介した2C53Tという多機能オシロ</a>も用いて測定します．<br>
-    (これがオシロスコープを買った目的の1つ)<br><br>
+        <p>
+          次に，<strong>IOの反応速度を測る</strong>必要があります．<br>
+          なぜなら実際のコードはアナログ入力された値の処理やif文を用いた測定関連の処理があるからです．<br>
+          この測定は，計測以外の無駄な処理を挟みたくないため<a href="../2c53t/index.html">先日紹介した2C53Tという多機能オシロ</a>も用いて測定します．<br>
+          (これがオシロスコープを買った目的の1つ)<br>
+          処理としては，2C53TからArduinoのアナログ入力ピンに矩形波(3.0 V・100 Hz)を入力し，閾値(今回は1.5 Vに設定)を超えたらデジタル出力ピンの出力状態を切り替えます．<br>
+          ADC読み取り，変数処理，条件分岐処理と最低限予想される処理は入れているので，実際の状況に近い測定ができると思います．<br>
+          と，測定をしたのですが問題が発生しました．<br>
+          Unoの方が測定できません．<br>
+          Dueの方はうまく測定できて，計測したいくつかのデータの平均値は396.00 μs，つまり約2,525 Sa/sで測定できるということが分かりました．<br>
+          つまり，どういうことか，Unoには毎秒100回測定するというのがキツすぎたようです．<br>
+          時間がなくて一旦はセットアップを片付けてしまいましたが，また毎秒10回の測定に変更して試してみます．<br>
+          (矩形波の周波数を10 Hzにするということ)<br>
+          兎にも角にも，RA4M1で測定をしようと思ったらシェーピングアンプを用い，入力波形の持続時間を伸ばしてやる必要があるということが分かりました．
+        </p>
+      </div>
 
-    処理としては，2C53TからArduinoのアナログ入力ピンに矩形波(3.0 V・100 Hz)を入力し，閾値(今回は1.5 Vに設定)を超えたらデジタル出力ピンの出力状態を切り替えます．<br>
-    ADC読み取り，変数処理，条件分岐処理と最低限予想される処理は入れているので，実際の状況に近い測定ができると思います．<br><br>
+      <nav class="post-nav" aria-label="前後記事ナビゲーション">
+        <a href="./about.html">← 前回:放射線測定器を作ろう</a>
+        <a href="./arduino-measure2.html">次回:ArduinoのIO速度を測る② →</a>
+      </nav>
 
-    と，測定をしたのですが問題が発生しました．<br>
-    Unoの方が測定できません．<br>
-    Dueの方はうまく測定できて，計測したいくつかのデータの平均値は396.00 μs，つまり約2,525 Sa/sで測定できるということが分かりました．<br>
-    つまり，どういうことか，Unoには毎秒100回測定するというのがキツすぎたようです．<br>
-    時間がなくて一旦はセットアップを片付けてしまいましたが，また毎秒10回の測定に変更して試してみます．<br>
-    (矩形波の周波数を10 Hzにするということ)<br><br>
-
-    兎にも角にも，RA4M1で測定をしようと思ったらシェーピングアンプを用い，入力波形の持続時間を伸ばしてやる必要があるということが分かりました．
-  </p>
-  <div>
-    <div align="left"><a href="./geiger-about.html">← 前回:放射線測定器を作ろう</a></div>
-    <div align="right"><a href="./arduino-measure1.html">次回:ArduinoのIO速度を測る② →</a></div>
-  </div>
-  <br>
-  <a href="./geiger-index.html">←目次へ戻る</a>
-  <a href="../index.html">←メインページに戻る</a>
-
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent-overlay">
-    <div id="cookie-consent-modal">
-      <h2>Web閲覧にあたって</h2>
-      <p>
-        このWebサイトはCookieと<br>
-        Google Analyticsを使用しています。<br><br>
-
-        閲覧を続行するには同意してください。<br>
-        この表示は90日後に再び現れます。
-      </p>
-      <button id="accept-cookies">同意する</button>
-    </div>
-  </div>
-
-  <script>
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-    function loadGoogleAnalytics() {
-      var id = 'G-G9KZ4SE6QC';
-      var gaScript = document.createElement('script');
-      gaScript.async = true;
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
-      document.head.appendChild(gaScript);
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', id);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var consent = getCookie('cookie_consent');
-      if(consent === 'accepted') {
-        loadGoogleAnalytics();
-      } else {
-        var overlay = document.getElementById('cookie-consent-overlay');
-        overlay.style.display = 'flex';
-        document.getElementById('accept-cookies').onclick = function() {
-          setCookie('cookie_consent', 'accepted', 90);
-          overlay.style.display = 'none';
-          loadGoogleAnalytics();
-        }
-      }
-    });
-  </script>
+      <div class="post-back">
+        <a href="./index.html">←目次へ戻る</a> / <a href="../index.html">←メインページに戻る</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
