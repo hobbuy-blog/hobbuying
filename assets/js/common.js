@@ -1,9 +1,26 @@
 (function () {
   "use strict";
 
-  // トップページか下層記事ページかを自動判定してベースパスを決定
-  const isRoot = document.body.dataset.page === "home";
-  const base = isRoot ? "./" : "../";
+  // common.js の読み込みパス（"./assets/..." や "../assets/..." や "../../assets/..."）から
+  // /hobbuying/ ルートへの相対ベースパスを自動判定
+  const currentScript =
+    document.currentScript ||
+    document.querySelector('script[src*="assets/js/common.js"]');
+  let base = "../";
+  if (currentScript) {
+    const src = currentScript.getAttribute("src") || "";
+    const idx = src.indexOf("assets/js/common.js");
+    if (idx !== -1) {
+      const prefix = src.slice(0, idx);
+      base = prefix === "" ? "./" : prefix;
+    }
+  } else if (document.body && document.body.dataset.page === "home") {
+    base = "./";
+  }
+
+  // トップページかどうかの判定（data-page="home" または base === "./"）
+  const isRoot =
+    (document.body && document.body.dataset.page === "home") || base === "./";
 
   // 確定したアウトライン化SVGロゴ（currentColor対応）
   const LOGO_SVG = `
