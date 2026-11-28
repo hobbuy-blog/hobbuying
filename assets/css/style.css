@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* =========================================
-   1. 変数定義（サイト全体の配色・サイズ管理）
+1. 変数定義（サイト全体の配色・サイズ管理）
    ========================================= */
 :root {
   --bg-body: #fafafa;
@@ -23,7 +23,7 @@
 }
 
 /* =========================================
-   2. リセット & ベース設定
+2. リセット & ベース設定
    ========================================= */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -62,7 +62,7 @@ img {
 }
 
 /* =========================================
-   3. 共通ヘッダー & ロゴ & ナビゲーション
+3. 共通ヘッダー & ロゴ & ナビゲーション
    ========================================= */
 .site-header {
   position: fixed;
@@ -199,7 +199,7 @@ img {
 }
 
 /* =========================================
-   4. 見出し・セクション・リスト
+4. 見出し・セクション・リスト
    ========================================= */
 main section {
   margin-bottom: 2.5rem;
@@ -262,7 +262,7 @@ hr {
 }
 
 /* =========================================
-   5. 所有商品リストテーブル（横スクロール対応）
+5. 所有商品リストテーブル（横スクロール対応）
    ========================================= */
 .table-scroll-wrapper {
   width: 100%;
@@ -270,25 +270,30 @@ hr {
   -webkit-overflow-scrolling: touch;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-strong);
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
+.item-list-table,
 .item-table {
   border-collapse: collapse;
   width: max-content;
-  min-width: 100%;
+  table-layout: fixed;
 }
 
+.item-list-table th,
+.item-list-table td,
 .item-table th,
 .item-table td {
   border: 1px solid var(--border-strong);
-  padding: 10px 12px;
   vertical-align: middle;
 }
 
+/* 左端のカテゴリ見出し（必ず1行・横スクロール時も左端固定） */
+.item-list-table th,
 .item-table th {
   background-color: #f0f2f5;
-  text-align: right;
+  padding: 0.6rem 1rem;
+  text-align: center;
   white-space: nowrap;
   font-weight: bold;
   position: sticky;
@@ -297,18 +302,29 @@ hr {
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
 }
 
+/* 各商品セル（幅を統一し、文字を勝手に折り返さない） */
+.item-list-table td,
 .item-table td {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  padding: 0.6rem 0.4rem;
   text-align: center;
-  min-width: 115px;
-  font-size: 0.88rem;
-  line-height: 1.35;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
+/* サムネイル画像のサイズ統一 */
+.item-list-table td img,
 .item-table td img {
-  max-height: 80px;
-  max-width: 100px;
+  width: auto !important;
+  height: 72px !important;
+  max-width: 104px !important;
   object-fit: contain;
-  margin-bottom: 6px;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+  vertical-align: middle;
 }
 
 .no-image-badge {
@@ -320,7 +336,7 @@ hr {
 }
 
 /* =========================================
-   6. 折りたたみ（過去の記事など）
+6. 折りたたみ（過去の記事など）
    ========================================= */
 details.archive-details {
   background-color: var(--bg-surface);
@@ -335,7 +351,7 @@ details.archive-details summary {
 }
 
 /* =========================================
-   7. お問い合わせフォーム & フッター
+7. お問い合わせフォーム & フッター
    ========================================= */
 .contact-form-wrapper {
   width: 100%;
@@ -369,7 +385,7 @@ details.archive-details summary {
 }
 
 /* =========================================
-   8. Cookie同意モーダル
+8. Cookie同意モーダル
    ========================================= */
 #cookie-consent-overlay {
   position: fixed;
@@ -415,7 +431,7 @@ details.archive-details summary {
 }
 
 /* =========================================
-   9. 個別記事ページ用スタイル
+9. 個別記事ページ用スタイル
    ========================================= */
 .post-header {
   margin-bottom: 1.5rem;
@@ -473,6 +489,31 @@ details.archive-details summary {
   color: var(--text-muted);
 }
 
+/* 画像の2枚横並びレイアウト（スマホ幅では縦並びに折り返し） */
+.figure-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.figure-row .post-figure {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+.figure-row .post-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .figure-row {
+    flex-direction: column;
+  }
+}
+
 /* 記事内スペック表・データテーブル */
 .post-body table {
   width: 100%;
@@ -505,6 +546,15 @@ details.archive-details summary {
   line-height: 1.5;
 }
 
+/* EQ設定表などのアスキーアート（背景白・黒文字の等幅表示） */
+.post-body pre.eq-chart {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-family: "MS Gothic", "Osaka-Mono", ui-monospace, monospace;
+  line-height: 1.5;
+}
+
 .post-body code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -516,48 +566,15 @@ details.archive-details summary {
   font-size: 0.9em;
 }
 
-/* メインページへ戻るリンク */
-.post-back {
-  margin-top: 3rem;
-  padding-top: 1.2rem;
-  border-top: 1px dashed var(--border-color);
-}
-/* EQ設定表などのアスキーアート（背景白・黒文字の等幅表示） */
-.post-body pre.eq-chart {
-  background-color: var(--bg-surface);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  font-family: "MS Gothic", "Osaka-Mono", ui-monospace, monospace;
-  line-height: 1.5;
-}
-
 /* 記事内の小さめ補足注釈 */
 .small-note {
   font-size: 0.78em;
   color: var(--text-muted);
 }
-/* 画像の2枚横並びレイアウト */
-.figure-row {
-  display: flex;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
 
-.figure-row .post-figure {
-  flex: 1 1 0;
-  min-width: 0;
-  margin: 0;
-}
-
-.figure-row .post-figure img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* スマホ幅（640px以下）では見やすさ優先で縦並びに折り返す */
-@media (max-width: 640px) {
-  .figure-row {
-    flex-direction: column;
-  }
+/* メインページへ戻るリンク */
+.post-back {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--border-color);
 }
